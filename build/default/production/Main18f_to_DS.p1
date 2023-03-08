@@ -7,27 +7,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "187 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18.h
 [v __delay `JF3152 ~T0 @X0 0 e ]
 [p i __delay ]
-"4001 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 4001: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
-"3263
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 3263: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
-[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
-"3625
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 3625: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"4223
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 4223: extern volatile unsigned char TRISE __attribute__((address(0xF96)));
-[v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
-"3375
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 3375: extern volatile unsigned char LATE __attribute__((address(0xF8D)));
-[v _LATE `Vuc ~T0 @X0 0 e@3981 ]
-"3847
+"3847 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 3847: extern volatile unsigned char TRISC __attribute__((address(0xF94)));
 [v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
 "3185
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 3185: extern volatile unsigned char LATC __attribute__((address(0xF8B)));
 [v _LATC `Vuc ~T0 @X0 0 e@3979 ]
+"10902
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 10902: extern volatile __bit TRISB0 __attribute__((address(0x7C98)));
+[v _TRISB0 `Vb ~T0 @X0 0 e@31896 ]
+"10905
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 10905: extern volatile __bit TRISB1 __attribute__((address(0x7C99)));
+[v _TRISB1 `Vb ~T0 @X0 0 e@31897 ]
 "6868
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 6868: extern volatile unsigned char SSPCON1 __attribute__((address(0xFC6)));
 [v _SSPCON1 `Vuc ~T0 @X0 0 e@4038 ]
@@ -44,10 +35,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 4468: extern volatile unsigned char PIR1 __attribute__((address(0xF9E)));
 [v _PIR1 `Vuc ~T0 @X0 0 e@3998 ]
 "24 Main18f_to_DS.c
-[; ;Main18f_to_DS.c: 24:   SSPCON2=0b00000000;
+[; ;Main18f_to_DS.c: 24:   SSPADD=20;
 [v _EnvioDato `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 "25
-[; ;Main18f_to_DS.c: 25:   SSPSTAT=0b11000000;
+[; ;Main18f_to_DS.c: 25:   PIR1=0;
 [v _LecturaDato `(uc ~T0 @X0 0 ef2`uc`uc ]
 "9972 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 9972: extern volatile __bit LATC0 __attribute__((address(0x7C58)));
@@ -79,11 +70,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8913
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 8913: extern volatile __bit ACKEN __attribute__((address(0x7E2C)));
 [v _ACKEN `Vb ~T0 @X0 0 e@32300 ]
-[t ~ __deprecated__ ]
-[t T1 __deprecated__ ]
-"10365
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 10365: extern volatile __bit __attribute__((__deprecated__)) RB2 __attribute__((address(0x7C0A)));
-[v _RB2 `Vb ~T1 @X0 0 e@31754 ]
 "10017
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 10017: extern volatile __bit LATE2 __attribute__((address(0x7C6A)));
 [v _LATE2 `Vb ~T0 @X0 0 e@31850 ]
@@ -604,220 +590,203 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h: 8893: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "14 Main18f_to_DS.c
-[; ;Main18f_to_DS.c: 14:   OSCCON=0b01110000;
+[; ;Main18f_to_DS.c: 14:   _delay((unsigned long)((1)*(8000000/4000.0)));
 [p x FOSC=INTOSC_EC ]
 "15
-[; ;Main18f_to_DS.c: 15:   _delay((unsigned long)((1)*(8000000/4000.0)));
+[; ;Main18f_to_DS.c: 15: 
 [p x WDT=OFF ]
 "16
-[; ;Main18f_to_DS.c: 16:   TRISD=0x00;
+[; ;Main18f_to_DS.c: 16:   TRISC=0;
 [p x LVP=OFF ]
 "17
-[; ;Main18f_to_DS.c: 17:   LATD=0;
+[; ;Main18f_to_DS.c: 17:   LATC=0;
 [p x PBADEN = OFF ]
 "28
-[; ;Main18f_to_DS.c: 28: 
+[; ;Main18f_to_DS.c: 28:     _delay((unsigned long)((10)*(8000000/4000.0)));
 [v _Contador `uc ~T0 @X0 1 e ]
 [i _Contador
 -> -> 0 `i `uc
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "30
-[; ;Main18f_to_DS.c: 30:     _delay((unsigned long)((10)*(8000000/4000.0)));
+[; ;Main18f_to_DS.c: 30:       aux = LecturaDato(0x10,0);
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
 "31
-[; ;Main18f_to_DS.c: 31: 
+[; ;Main18f_to_DS.c: 31:       EnvioDato(0x10,0,0);
 [v _aux `uc ~T0 @X0 1 a ]
 [e = _aux -> -> 12 `i `uc ]
 "32
-[; ;Main18f_to_DS.c: 32: 
-[v _ax `i ~T0 @X0 1 a ]
-[v _ay `i ~T0 @X0 1 a ]
-[v _az `i ~T0 @X0 1 a ]
-[v _gx `i ~T0 @X0 1 a ]
-[v _gy `i ~T0 @X0 1 a ]
-[v _gz `i ~T0 @X0 1 a ]
-"33
-[; ;Main18f_to_DS.c: 33: 
+[; ;Main18f_to_DS.c: 32:       Contador ++;
 [e = _OSCCON -> -> 112 `i `uc ]
-"34
-[; ;Main18f_to_DS.c: 34:       EnvioDato(0x10,1,Contador);
+"33
+[; ;Main18f_to_DS.c: 33:       if(Contador >= 10){
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "35
-[; ;Main18f_to_DS.c: 35:       aux = LecturaDato(0x10,0);
-[e = _TRISD -> -> 0 `i `uc ]
-"36
-[; ;Main18f_to_DS.c: 36:       EnvioDato(0x10,0,5);
-[e = _LATD -> -> 0 `i `uc ]
-"37
-[; ;Main18f_to_DS.c: 37:       Contador ++;
-[e = _TRISB -> -> 255 `i `uc ]
-"38
-[; ;Main18f_to_DS.c: 38:       if(Contador >= 10){
-[e = _TRISE -> -> 0 `i `uc ]
-"39
-[; ;Main18f_to_DS.c: 39:           Contador=0;
-[e = _LATE -> -> 0 `i `uc ]
-"40
-[; ;Main18f_to_DS.c: 40:       }
+[; ;Main18f_to_DS.c: 35:       }
 [e = _TRISC -> -> 0 `i `uc ]
-"41
-[; ;Main18f_to_DS.c: 41:       if(aux==0){
+"36
+[; ;Main18f_to_DS.c: 36:       if(aux==0){
 [e = _LATC -> -> 0 `i `uc ]
-"42
-[; ;Main18f_to_DS.c: 42:           LATC0=1;
+"38
+[; ;Main18f_to_DS.c: 38:       }
+[e = _TRISB0 -> -> 1 `i `b ]
+"39
+[; ;Main18f_to_DS.c: 39:       else{
+[e = _TRISB1 -> -> 1 `i `b ]
+"40
+[; ;Main18f_to_DS.c: 40:           LATC0=0;
 [e = _SSPCON1 -> -> 40 `i `uc ]
-"43
-[; ;Main18f_to_DS.c: 43:       }
+"41
+[; ;Main18f_to_DS.c: 41:       }
 [e = _SSPCON2 -> -> 0 `i `uc ]
-"44
-[; ;Main18f_to_DS.c: 44:       else{
+"42
+[; ;Main18f_to_DS.c: 42:     LATC2=1;
 [e = _SSPSTAT -> -> 192 `i `uc ]
-"45
-[; ;Main18f_to_DS.c: 45:           LATC0=0;
-[e = _SSPADD -> -> 19 `i `uc ]
-"46
-[; ;Main18f_to_DS.c: 46:       }
+"43
+[; ;Main18f_to_DS.c: 43:     _delay((unsigned long)((1000)*(8000000/4000.0)));
+[e = _SSPADD -> -> 20 `i `uc ]
+"44
+[; ;Main18f_to_DS.c: 44:     LATC2=0;
 [e = _PIR1 -> -> 0 `i `uc ]
-"48
-[; ;Main18f_to_DS.c: 48: 
+"46
+[; ;Main18f_to_DS.c: 46:   }
 [e :U 369 ]
 {
-"49
-[; ;Main18f_to_DS.c: 49:     LATC2=1;
+"47
+[; ;Main18f_to_DS.c: 47: }
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"53
-[; ;Main18f_to_DS.c: 53:   }
+"48
+[; ;Main18f_to_DS.c: 48: void Start(void){
 [e ( _EnvioDato (3 , , -> -> 16 `i `uc -> -> 1 `i `uc -> _Contador `uc ]
-"54
-[; ;Main18f_to_DS.c: 54: }
+"49
+[; ;Main18f_to_DS.c: 49:   SEN=1;
 [e = _aux ( _LecturaDato (2 , -> -> 16 `i `uc -> -> 0 `i `uc ]
-"55
-[; ;Main18f_to_DS.c: 55: void Start(void){
-[e ( _EnvioDato (3 , , -> -> 16 `i `uc -> -> 0 `i `uc -> -> 5 `i `uc ]
-"56
-[; ;Main18f_to_DS.c: 56:   SEN=1;
+"50
+[; ;Main18f_to_DS.c: 50:   while(SEN==1);
+[e ( _EnvioDato (3 , , -> -> 16 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
+"51
+[; ;Main18f_to_DS.c: 51: }
 [e ++ _Contador -> -> 1 `i `uc ]
-"57
-[; ;Main18f_to_DS.c: 57:   while(SEN==1);
+"52
+[; ;Main18f_to_DS.c: 52: void Stop(void){
 [e $ ! >= -> _Contador `i -> 10 `i 371  ]
 {
-"58
-[; ;Main18f_to_DS.c: 58: }
+"53
+[; ;Main18f_to_DS.c: 53:   PEN=1;
 [e = _Contador -> -> 0 `i `uc ]
-"59
-[; ;Main18f_to_DS.c: 59: void Stop(void){
+"54
+[; ;Main18f_to_DS.c: 54:   while(PEN==1);
 }
 [e :U 371 ]
-"60
-[; ;Main18f_to_DS.c: 60:   PEN=1;
+"55
+[; ;Main18f_to_DS.c: 55: }
 [e $ ! == -> _aux `i -> 0 `i 372  ]
 {
-"61
-[; ;Main18f_to_DS.c: 61:   while(PEN==1);
+"56
+[; ;Main18f_to_DS.c: 56: void Rstart(void){
 [e = _LATC0 -> -> 1 `i `b ]
-"62
-[; ;Main18f_to_DS.c: 62: }
+"57
+[; ;Main18f_to_DS.c: 57:   RSEN=1;
 }
 [e $U 373  ]
-"63
-[; ;Main18f_to_DS.c: 63: void Rstart(void){
+"58
+[; ;Main18f_to_DS.c: 58:   while(RSEN==1);
 [e :U 372 ]
 {
-"64
-[; ;Main18f_to_DS.c: 64:   RSEN=1;
+"59
+[; ;Main18f_to_DS.c: 59: }
 [e = _LATC0 -> -> 0 `i `b ]
-"65
-[; ;Main18f_to_DS.c: 65:   while(RSEN==1);
+"60
+[; ;Main18f_to_DS.c: 60: void EnvioDato(unsigned char Direccion, unsigned char Registro, unsigned char Dato){
 }
 [e :U 373 ]
-"68
-[; ;Main18f_to_DS.c: 68:   Start();
+"61
+[; ;Main18f_to_DS.c: 61:   Start();
 [e = _LATC2 -> -> 1 `i `b ]
-"69
-[; ;Main18f_to_DS.c: 69:   SSPBUF=Direccion;
+"62
+[; ;Main18f_to_DS.c: 62: 
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"70
-[; ;Main18f_to_DS.c: 70:   SSPIF=0;
+"63
+[; ;Main18f_to_DS.c: 63:   SSPBUF=Direccion & 0b11111110;
 [e = _LATC2 -> -> 0 `i `b ]
-"71
-[; ;Main18f_to_DS.c: 71:   while(SSPIF==0);
+"64
+[; ;Main18f_to_DS.c: 64:   SSPIF=0;
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"72
-[; ;Main18f_to_DS.c: 72:   SSPBUF=Registro;
+"65
+[; ;Main18f_to_DS.c: 65:   while(SSPIF==0);
 }
 [e :U 368 ]
 [e $U 369  ]
 [e :U 370 ]
-"73
-[; ;Main18f_to_DS.c: 73:   SSPIF=0;
+"66
+[; ;Main18f_to_DS.c: 66: 
 [e :UE 367 ]
 }
-"74
-[; ;Main18f_to_DS.c: 74:   while(SSPIF==0);
+"67
+[; ;Main18f_to_DS.c: 67:   SSPBUF=Registro;
 [v _Start `(v ~T0 @X0 1 ef ]
 {
 [e :U _Start ]
 [f ]
-"75
-[; ;Main18f_to_DS.c: 75:   SSPBUF=Dato;
+"68
+[; ;Main18f_to_DS.c: 68:   SSPIF=0;
 [e = _SEN -> -> 1 `i `b ]
-"76
-[; ;Main18f_to_DS.c: 76:   SSPIF=0;
+"69
+[; ;Main18f_to_DS.c: 69:   while(SSPIF==0);
 [e $U 375  ]
 [e :U 376 ]
 [e :U 375 ]
 [e $ == -> _SEN `i -> 1 `i 376  ]
 [e :U 377 ]
-"77
-[; ;Main18f_to_DS.c: 77:   while(SSPIF==0);
+"70
+[; ;Main18f_to_DS.c: 70: 
 [e :UE 374 ]
 }
-"78
-[; ;Main18f_to_DS.c: 78:   SSPIF=0;
+"71
+[; ;Main18f_to_DS.c: 71:   SSPBUF=Dato;
 [v _Stop `(v ~T0 @X0 1 ef ]
 {
 [e :U _Stop ]
 [f ]
-"79
-[; ;Main18f_to_DS.c: 79:   Stop();
+"72
+[; ;Main18f_to_DS.c: 72:   SSPIF=0;
 [e = _PEN -> -> 1 `i `b ]
-"80
-[; ;Main18f_to_DS.c: 80: }
+"73
+[; ;Main18f_to_DS.c: 73:   while(SSPIF==0);
 [e $U 379  ]
 [e :U 380 ]
 [e :U 379 ]
 [e $ == -> _PEN `i -> 1 `i 380  ]
 [e :U 381 ]
-"81
-[; ;Main18f_to_DS.c: 81: unsigned char LecturaDato(unsigned char Direccion, unsigned char Registro){
+"74
+[; ;Main18f_to_DS.c: 74: 
 [e :UE 378 ]
 }
-"82
-[; ;Main18f_to_DS.c: 82:   Start();
+"75
+[; ;Main18f_to_DS.c: 75:   SSPIF=0;
 [v _Rstart `(v ~T0 @X0 1 ef ]
 {
 [e :U _Rstart ]
 [f ]
-"83
-[; ;Main18f_to_DS.c: 83:   SSPBUF=Direccion & 0b11111110;
+"76
+[; ;Main18f_to_DS.c: 76:   Stop();
 [e = _RSEN -> -> 1 `i `b ]
-"84
-[; ;Main18f_to_DS.c: 84:   SSPIF=0;
+"77
+[; ;Main18f_to_DS.c: 77: }
 [e $U 383  ]
 [e :U 384 ]
 [e :U 383 ]
 [e $ == -> _RSEN `i -> 1 `i 384  ]
 [e :U 385 ]
-"85
-[; ;Main18f_to_DS.c: 85:   while(SSPIF==0);
+"78
+[; ;Main18f_to_DS.c: 78: unsigned char LecturaDato(unsigned char Direccion, unsigned char Registro){
 [e :UE 382 ]
 }
-"86
-[; ;Main18f_to_DS.c: 86:   SSPBUF=Registro;
+"79
+[; ;Main18f_to_DS.c: 79:   Start();
 [v _EnvioDato `(v ~T0 @X0 1 ef3`uc`uc`uc ]
 {
 [e :U _EnvioDato ]
@@ -825,317 +794,265 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _Registro `uc ~T0 @X0 1 r2 ]
 [v _Dato `uc ~T0 @X0 1 r3 ]
 [f ]
-"87
-[; ;Main18f_to_DS.c: 87:   SSPIF=0;
+"80
+[; ;Main18f_to_DS.c: 80: 
 [e ( _Start ..  ]
-"88
-[; ;Main18f_to_DS.c: 88:   while(SSPIF==0);
-[e = _SSPBUF _Direccion ]
-"89
-[; ;Main18f_to_DS.c: 89:   Rstart();
+"82
+[; ;Main18f_to_DS.c: 82:   SSPIF=0;
+[e = _SSPBUF -> & -> _Direccion `i -> 254 `i `uc ]
+"83
+[; ;Main18f_to_DS.c: 83:   while(SSPIF==0);
 [e = _SSPIF -> -> 0 `i `b ]
-"90
-[; ;Main18f_to_DS.c: 90:   SSPBUF=Direccion | 0b00000001;
+"84
+[; ;Main18f_to_DS.c: 84: 
 [e $U 387  ]
 [e :U 388 ]
 [e :U 387 ]
 [e $ == -> _SSPIF `i -> 0 `i 388  ]
 [e :U 389 ]
-"91
-[; ;Main18f_to_DS.c: 91:   SSPIF=0;
+"86
+[; ;Main18f_to_DS.c: 86:   SSPIF=0;
 [e = _SSPBUF _Registro ]
-"92
-[; ;Main18f_to_DS.c: 92:   while(SSPIF==0);
+"87
+[; ;Main18f_to_DS.c: 87:   while(SSPIF==0);
 [e = _SSPIF -> -> 0 `i `b ]
-"93
-[; ;Main18f_to_DS.c: 93:   RCEN=1;
+"88
+[; ;Main18f_to_DS.c: 88: 
 [e $U 390  ]
 [e :U 391 ]
 [e :U 390 ]
 [e $ == -> _SSPIF `i -> 0 `i 391  ]
 [e :U 392 ]
-"94
-[; ;Main18f_to_DS.c: 94:   SSPIF=0;
+"90
+[; ;Main18f_to_DS.c: 90: 
 [e = _SSPBUF _Dato ]
-"95
-[; ;Main18f_to_DS.c: 95:   while(SSPIF==0);
+"91
+[; ;Main18f_to_DS.c: 91:   SSPBUF=Direccion | 0b00000001;
 [e = _SSPIF -> -> 0 `i `b ]
-"96
-[; ;Main18f_to_DS.c: 96: 
+"92
+[; ;Main18f_to_DS.c: 92:   SSPIF=0;
 [e $U 393  ]
 [e :U 394 ]
 [e :U 393 ]
 [e $ == -> _SSPIF `i -> 0 `i 394  ]
 [e :U 395 ]
-"97
-[; ;Main18f_to_DS.c: 97:   SSPIF = 0;
+"94
+[; ;Main18f_to_DS.c: 94: 
 [e = _SSPIF -> -> 0 `i `b ]
-"98
-[; ;Main18f_to_DS.c: 98:   ACKDT = 1;
+"95
+[; ;Main18f_to_DS.c: 95:   RCEN=1;
 [e ( _Stop ..  ]
-"99
-[; ;Main18f_to_DS.c: 99:   ACKEN = 1;
+"96
+[; ;Main18f_to_DS.c: 96:   SSPIF=0;
 [e :UE 386 ]
 }
-"100
-[; ;Main18f_to_DS.c: 100:   while(SSPIF==0);
+"97
+[; ;Main18f_to_DS.c: 97:   while(SSPIF==0);
 [v _LecturaDato `(uc ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _LecturaDato ]
 [v _Direccion `uc ~T0 @X0 1 r1 ]
 [v _Registro `uc ~T0 @X0 1 r2 ]
 [f ]
-"101
-[; ;Main18f_to_DS.c: 101: 
+"98
+[; ;Main18f_to_DS.c: 98: 
 [e ( _Start ..  ]
-"102
-[; ;Main18f_to_DS.c: 102: 
+"100
+[; ;Main18f_to_DS.c: 100:   ACKDT = 1;
 [e = _SSPBUF -> & -> _Direccion `i -> 254 `i `uc ]
-"103
-[; ;Main18f_to_DS.c: 103:   Stop();
+"101
+[; ;Main18f_to_DS.c: 101:   ACKEN = 1;
 [e = _SSPIF -> -> 0 `i `b ]
-"104
-[; ;Main18f_to_DS.c: 104:   return SSPBUF;
+"102
+[; ;Main18f_to_DS.c: 102:   while(SSPIF==0);
 [e $U 397  ]
 [e :U 398 ]
 [e :U 397 ]
 [e $ == -> _SSPIF `i -> 0 `i 398  ]
 [e :U 399 ]
-"105
-[; ;Main18f_to_DS.c: 105: }
+"104
+[; ;Main18f_to_DS.c: 104: 
 [e = _SSPBUF _Registro ]
-"106
-[; ;Main18f_to_DS.c: 106: unsigned char LecturaDatoA(unsigned char Direccion){
+"105
+[; ;Main18f_to_DS.c: 105:   Stop();
 [e = _SSPIF -> -> 0 `i `b ]
-"107
-[; ;Main18f_to_DS.c: 107:   while(RB2 == 1);
+"106
+[; ;Main18f_to_DS.c: 106:   return SSPBUF;
 [e $U 400  ]
 [e :U 401 ]
 [e :U 400 ]
 [e $ == -> _SSPIF `i -> 0 `i 401  ]
 [e :U 402 ]
 "108
-[; ;Main18f_to_DS.c: 108:   _delay((unsigned long)((500)*(8000000/4000.0)));
+[; ;Main18f_to_DS.c: 108: unsigned char LecturaDatoA(unsigned char Direccion){
 [e ( _Rstart ..  ]
-"109
-[; ;Main18f_to_DS.c: 109:   Start();
-[e = _SSPBUF -> | -> _Direccion `i -> 1 `i `uc ]
 "110
-[; ;Main18f_to_DS.c: 110:   LATE2=1;
-[e = _SSPIF -> -> 0 `i `b ]
+[; ;Main18f_to_DS.c: 110:   Start();
+[e = _SSPBUF -> | -> _Direccion `i -> 1 `i `uc ]
 "111
-[; ;Main18f_to_DS.c: 111:   LATE1=1;
+[; ;Main18f_to_DS.c: 111:   LATE2=1;
+[e = _SSPIF -> -> 0 `i `b ]
+"112
+[; ;Main18f_to_DS.c: 112:   LATE1=1;
 [e $U 403  ]
 [e :U 404 ]
 [e :U 403 ]
 [e $ == -> _SSPIF `i -> 0 `i 404  ]
 [e :U 405 ]
-"112
-[; ;Main18f_to_DS.c: 112: 
-[e = _RCEN -> -> 1 `i `b ]
-"113
-[; ;Main18f_to_DS.c: 113:   while(RB2 == 1);
-[e = _SSPIF -> -> 0 `i `b ]
 "114
-[; ;Main18f_to_DS.c: 114:     _delay((unsigned long)((500)*(8000000/4000.0)));
+[; ;Main18f_to_DS.c: 114: 
+[e = _RCEN -> -> 1 `i `b ]
+"115
+[; ;Main18f_to_DS.c: 115:   SSPBUF=Direccion | 0b00000001;
+[e = _SSPIF -> -> 0 `i `b ]
+"116
+[; ;Main18f_to_DS.c: 116:   SSPIF=0;
 [e $U 406  ]
 [e :U 407 ]
 [e :U 406 ]
 [e $ == -> _SSPIF `i -> 0 `i 407  ]
 [e :U 408 ]
-"116
-[; ;Main18f_to_DS.c: 116:   SSPIF=0;
-[e = _SSPIF -> -> 0 `i `b ]
-"117
-[; ;Main18f_to_DS.c: 117:   while(SSPIF==0);
-[e = _ACKDT -> -> 1 `i `b ]
 "118
 [; ;Main18f_to_DS.c: 118:   LATE2=0;
-[e = _ACKEN -> -> 1 `i `b ]
+[e = _SSPIF -> -> 0 `i `b ]
 "119
 [; ;Main18f_to_DS.c: 119: 
+[e = _ACKDT -> -> 1 `i `b ]
+"120
+[; ;Main18f_to_DS.c: 120: 
+[e = _ACKEN -> -> 1 `i `b ]
+"121
+[; ;Main18f_to_DS.c: 121:   RCEN=1;
 [e $U 409  ]
 [e :U 410 ]
 [e :U 409 ]
 [e $ == -> _SSPIF `i -> 0 `i 410  ]
 [e :U 411 ]
-"122
-[; ;Main18f_to_DS.c: 122:   RCEN=1;
+"124
+[; ;Main18f_to_DS.c: 124:   LATE2=1;
 [e ( _Stop ..  ]
-"123
-[; ;Main18f_to_DS.c: 123:   SSPIF=0;
+"125
+[; ;Main18f_to_DS.c: 125: 
 [e ) _SSPBUF ]
 [e $UE 396  ]
-"124
-[; ;Main18f_to_DS.c: 124:   while(SSPIF==0);
+"126
+[; ;Main18f_to_DS.c: 126: 
 [e :UE 396 ]
 }
-"125
-[; ;Main18f_to_DS.c: 125:   LATE2=1;
+"127
+[; ;Main18f_to_DS.c: 127:   Stop();
 [v _LecturaDatoA `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _LecturaDatoA ]
 [v _Direccion `uc ~T0 @X0 1 r1 ]
 [f ]
-"126
-[; ;Main18f_to_DS.c: 126: 
+"129
+[; ;Main18f_to_DS.c: 129:   LATE1=0;
+[e ( _Start ..  ]
+"130
+[; ;Main18f_to_DS.c: 130:   return SSPBUF;
+[e = _LATE2 -> -> 1 `i `b ]
+"131
+[; ;Main18f_to_DS.c: 131: }
+[e = _LATE1 -> -> 1 `i `b ]
+"134
+[; ;Main18f_to_DS.c: 134: 
+[e = _SSPBUF -> | -> _Direccion `i -> 1 `i `uc ]
+"135
+[; ;Main18f_to_DS.c: 135:     Start();
+[e = _SSPIF -> -> 0 `i `b ]
+"136
+[; ;Main18f_to_DS.c: 136:     LATC0=1;
 [e $U 413  ]
 [e :U 414 ]
 [e :U 413 ]
-[e $ == -> _RB2 `i -> 1 `i 414  ]
+[e $ == -> _SSPIF `i -> 0 `i 414  ]
 [e :U 415 ]
-"127
-[; ;Main18f_to_DS.c: 127:   while(RB2 == 1);
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"128
-[; ;Main18f_to_DS.c: 128:     _delay((unsigned long)((500)*(8000000/4000.0)));
-[e ( _Start ..  ]
-"129
-[; ;Main18f_to_DS.c: 129:   Stop();
-[e = _LATE2 -> -> 1 `i `b ]
-"130
-[; ;Main18f_to_DS.c: 130:   LATE2=0;
-[e = _LATE1 -> -> 1 `i `b ]
-"132
-[; ;Main18f_to_DS.c: 132:   return SSPBUF;
+"137
+[; ;Main18f_to_DS.c: 137:     LATC1=1;
+[e = _LATE2 -> -> 0 `i `b ]
+"140
+[; ;Main18f_to_DS.c: 140:     SSPBUF=Direccion;
+[e = _RCEN -> -> 1 `i `b ]
+"141
+[; ;Main18f_to_DS.c: 141:     SSPIF=0;
+[e = _SSPIF -> -> 0 `i `b ]
+"142
+[; ;Main18f_to_DS.c: 142:     while(SSPIF==0);
 [e $U 416  ]
 [e :U 417 ]
 [e :U 416 ]
-[e $ == -> _RB2 `i -> 1 `i 417  ]
+[e $ == -> _SSPIF `i -> 0 `i 417  ]
 [e :U 418 ]
-"133
-[; ;Main18f_to_DS.c: 133: }
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"134
-[; ;Main18f_to_DS.c: 134: void EnvioDatoA(unsigned char Direccion, unsigned char Dato){
-[e = _SSPBUF -> | -> _Direccion `i -> 1 `i `uc ]
-"135
-[; ;Main18f_to_DS.c: 135: 
-[e = _SSPIF -> -> 0 `i `b ]
-"136
-[; ;Main18f_to_DS.c: 136: 
-[e $U 419  ]
-[e :U 420 ]
-[e :U 419 ]
-[e $ == -> _SSPIF `i -> 0 `i 420  ]
-[e :U 421 ]
-"137
-[; ;Main18f_to_DS.c: 137:     _delay((unsigned long)((500)*(8000000/4000.0)));
-[e = _LATE2 -> -> 0 `i `b ]
-"139
-[; ;Main18f_to_DS.c: 139:     LATC0=1;
-[e $U 422  ]
-[e :U 423 ]
-[e :U 422 ]
-[e $ == -> _RB2 `i -> 1 `i 423  ]
-[e :U 424 ]
-"140
-[; ;Main18f_to_DS.c: 140:     LATC1=1;
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"141
-[; ;Main18f_to_DS.c: 141: 
-[e = _RCEN -> -> 1 `i `b ]
-"142
-[; ;Main18f_to_DS.c: 142: 
-[e = _SSPIF -> -> 0 `i `b ]
 "143
-[; ;Main18f_to_DS.c: 143: 
-[e $U 425  ]
-[e :U 426 ]
-[e :U 425 ]
-[e $ == -> _SSPIF `i -> 0 `i 426  ]
-[e :U 427 ]
-"144
-[; ;Main18f_to_DS.c: 144:     _delay((unsigned long)((500)*(8000000/4000.0)));
+[; ;Main18f_to_DS.c: 143:     LATC0=0;
 [e = _LATE2 -> -> 1 `i `b ]
 "146
-[; ;Main18f_to_DS.c: 146:     SSPIF=0;
-[e $U 428  ]
-[e :U 429 ]
-[e :U 428 ]
-[e $ == -> _RB2 `i -> 1 `i 429  ]
-[e :U 430 ]
-"147
-[; ;Main18f_to_DS.c: 147:     while(SSPIF==0);
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"148
-[; ;Main18f_to_DS.c: 148:     LATC0=0;
+[; ;Main18f_to_DS.c: 146:     SSPBUF=Dato;
 [e ( _Stop ..  ]
-"149
-[; ;Main18f_to_DS.c: 149: 
+"147
+[; ;Main18f_to_DS.c: 147:     SSPIF=0;
 [e = _LATE2 -> -> 0 `i `b ]
-"150
-[; ;Main18f_to_DS.c: 150: 
+"148
+[; ;Main18f_to_DS.c: 148:     while(SSPIF==0);
 [e = _LATE1 -> -> 0 `i `b ]
-"151
-[; ;Main18f_to_DS.c: 151: 
+"149
+[; ;Main18f_to_DS.c: 149:     LATC0=1;
 [e ) _SSPBUF ]
 [e $UE 412  ]
-"152
-[; ;Main18f_to_DS.c: 152:     _delay((unsigned long)((500)*(8000000/4000.0)));
+"150
+[; ;Main18f_to_DS.c: 150: 
 [e :UE 412 ]
 }
-"153
-[; ;Main18f_to_DS.c: 153:     SSPBUF=Dato;
+"151
+[; ;Main18f_to_DS.c: 151: 
 [v _EnvioDatoA `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _EnvioDatoA ]
 [v _Direccion `uc ~T0 @X0 1 r1 ]
 [v _Dato `uc ~T0 @X0 1 r2 ]
 [f ]
-"156
-[; ;Main18f_to_DS.c: 156:     LATC0=1;
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"157
-[; ;Main18f_to_DS.c: 157: 
+"154
+[; ;Main18f_to_DS.c: 154:     LATC0=0;
 [e ( _Start ..  ]
-"158
-[; ;Main18f_to_DS.c: 158: 
+"155
+[; ;Main18f_to_DS.c: 155:     LATC1=0;
 [e = _LATC0 -> -> 1 `i `b ]
-"159
-[; ;Main18f_to_DS.c: 159: 
+"156
+[; ;Main18f_to_DS.c: 156: }
 [e = _LATC1 -> -> 1 `i `b ]
-"163
-[; ;Main18f_to_DS.c: 163:     LATC0=0;
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"164
-[; ;Main18f_to_DS.c: 164:     LATC1=0;
+"159
 [e = _SSPBUF _Direccion ]
+"160
+[e = _SSPIF -> -> 0 `i `b ]
+"161
+[e $U 420  ]
+[e :U 421 ]
+[e :U 420 ]
+[e $ == -> _SSPIF `i -> 0 `i 421  ]
+[e :U 422 ]
+"162
+[e = _LATC0 -> -> 0 `i `b ]
 "165
-[; ;Main18f_to_DS.c: 165: }
-[e = _SSPIF -> -> 0 `i `b ]
-"166
-[e $U 432  ]
-[e :U 433 ]
-[e :U 432 ]
-[e $ == -> _SSPIF `i -> 0 `i 433  ]
-[e :U 434 ]
-"167
-[e = _LATC0 -> -> 0 `i `b ]
-"171
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"172
 [e = _SSPBUF _Dato ]
-"173
+"166
 [e = _SSPIF -> -> 0 `i `b ]
-"174
-[e $U 435  ]
-[e :U 436 ]
-[e :U 435 ]
-[e $ == -> _SSPIF `i -> 0 `i 436  ]
-[e :U 437 ]
-"175
+"167
+[e $U 423  ]
+[e :U 424 ]
+[e :U 423 ]
+[e $ == -> _SSPIF `i -> 0 `i 424  ]
+[e :U 425 ]
+"168
 [e = _LATC0 -> -> 1 `i `b ]
-"179
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"180
+"171
 [e = _SSPIF -> -> 0 `i `b ]
-"181
+"172
 [e ( _Stop ..  ]
-"182
+"173
 [e = _LATC0 -> -> 0 `i `b ]
-"183
+"174
 [e = _LATC1 -> -> 0 `i `b ]
-"184
-[e :UE 431 ]
+"175
+[e :UE 419 ]
 }

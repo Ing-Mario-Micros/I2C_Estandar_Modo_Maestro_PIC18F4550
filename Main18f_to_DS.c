@@ -11,9 +11,9 @@
 
 #include<xc.h>
 #define _XTAL_FREQ 8000000
-#pragma config FOSC=INTOSC_EC
+#pragma config FOSC=INTOSC_EC   //Fuente de reloj con oscilador interno
 #pragma config WDT=OFF          //Desactivación del perro guardian
-#pragma config LVP=OFF                 //Programación de Bajo voltaje Desactivada
+#pragma config LVP=OFF          //Programación de Bajo voltaje Desactivada
 #pragma config PBADEN = OFF     //Desacivación las funciones analogas del puerto B
 
 
@@ -28,46 +28,39 @@ void EnvioDatoA(unsigned char Direccion, unsigned char Dato);
 char Contador = 0;
 
 void main(void){
-  unsigned char aux=12;
-  int ax,ay,az,gx,gy,gz;
-  OSCCON=0b01110000;
+  unsigned char aux=12;//Variable temporal para guardar dato de registro
+  OSCCON=0b01110000; //Configuración reloj interno a 8MHz
   __delay_ms(1);
-  TRISD=0x00;
-  LATD=0;
-  TRISB=0xFF;
-  TRISE=0;
-  LATE=0;
-  TRISC=0;
-  LATC=0;
+  
+  TRISC=0;//Configuración del puerto C para LEDS como salida
+  LATC=0; //Inicialización del puerto C de LEDS en cero
+  
+  TRISB0=1;
+  TRISB1=1;
   SSPCON1=0b00101000;
   SSPCON2=0b00000000;
   SSPSTAT=0b11000000;
-  SSPADD=19;
-  PIR1=0;  
+  SSPADD=20;//100kHz Calculo necesario SSPADD=(Fosc/4)/FrecI2C
+  PIR1=0;  //Inicializacion de las banderas del registro de interrupción PIR1 en 0
   //__delay_ms(100);
   while(1){
     __delay_ms(10);
-      /*EnvioDato(0x0B,Contador,Contador);*/
-      //LATD=LecturaDatoA(0x10);
-      //EnvioDatoA(0x10,1);
-      EnvioDato(0x10,1,Contador);
-      aux = LecturaDato(0x10,0);
-      EnvioDato(0x10,0,5);
-      Contador ++;
-      if(Contador >= 10){
+      EnvioDato(0x10,1,Contador);//Envio de dato posicion 1 con valor variable 
+      aux = LecturaDato(0x10,0); //Lectura del dato almacenado en la posición 0
+      EnvioDato(0x10,0,0); //Encio de dato en posicion 0 con valor fijo de 0
+      Contador ++; //Incremento de valor variable en 1
+      if(Contador >= 10){//Reseteo de variable a 0 cuando llega a 10
           Contador=0;
       }
-      if(aux==0){
+      if(aux==0){//Identifica si el valor almacenado en la posición 0 es igual a 0
           LATC0=1;
       }
       else{
           LATC0=0;
       }
-    //EnvioDatoA(0x10,1);
-    //Contador++;
-    LATC2=1;
+    LATC2=1; //Led de funcionamiento On
     __delay_ms(1000);
-    LATC2=0;
+    LATC2=0; //Led de funcionamiento Off
     __delay_ms(1000);
   }  
 }
@@ -85,30 +78,39 @@ void Rstart(void){
 }
 void EnvioDato(unsigned char Direccion, unsigned char Registro, unsigned char Dato){
   Start();
-  SSPBUF=Direccion; //& 0b11111110;
+  
+  SSPBUF=Direccion & 0b11111110;
   SSPIF=0;
   while(SSPIF==0);
+  
   SSPBUF=Registro;
   SSPIF=0;
   while(SSPIF==0);
+  
   SSPBUF=Dato;
   SSPIF=0;
   while(SSPIF==0);
+  
   SSPIF=0;
   Stop();  
 }
 unsigned char LecturaDato(unsigned char Direccion, unsigned char Registro){
   Start();
+  
   SSPBUF=Direccion & 0b11111110;
   SSPIF=0;
   while(SSPIF==0);
+  
   SSPBUF=Registro;
   SSPIF=0;
   while(SSPIF==0);
+  
   Rstart();
+  
   SSPBUF=Direccion | 0b00000001;
   SSPIF=0;
   while(SSPIF==0);
+  
   RCEN=1;
   SSPIF=0;
   while(SSPIF==0);
@@ -123,60 +125,49 @@ unsigned char LecturaDato(unsigned char Direccion, unsigned char Registro){
   return SSPBUF;  
 }
 unsigned char LecturaDatoA(unsigned char Direccion){
-  while(RB2 == 1);
-  __delay_ms(500);
+  
   Start();
   LATE2=1;
   LATE1=1;
   
-  while(RB2 == 1);
-    __delay_ms(500);
+  
   SSPBUF=Direccion | 0b00000001; //& 0b11111110;
   SSPIF=0;
   while(SSPIF==0);
   LATE2=0;
   
-  while(RB2 == 1);
-    __delay_ms(500);
+  
   RCEN=1;
   SSPIF=0;
   while(SSPIF==0);
   LATE2=1;
   
-  while(RB2 == 1);
-    __delay_ms(500);
+  
   Stop();
   LATE2=0;
   LATE1=0;
   return SSPBUF;  
 }
 void EnvioDatoA(unsigned char Direccion, unsigned char Dato){
-    //while(RB2 == 1);
+    
     //Envio de condicion de Start
-    __delay_ms(500);
     Start();
     LATC0=1;
     LATC1=1;
     
-    //while(RB2 == 1);
     //Envio de Dirección de Escritura
-    __delay_ms(500);
     SSPBUF=Direccion; //& 0b11111110;
     SSPIF=0;
     while(SSPIF==0);
     LATC0=0;
     
-    //while(RB2 == 1);
     //Envio de dato
-    __delay_ms(500);
     SSPBUF=Dato;
     SSPIF=0;
     while(SSPIF==0);
     LATC0=1;
     
-    //while(RB2 == 1);
     //Envio de dirección de Stop
-    __delay_ms(500);
     SSPIF=0;
     Stop(); 
     LATC0=0;

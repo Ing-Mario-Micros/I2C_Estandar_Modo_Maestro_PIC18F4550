@@ -5640,30 +5640,25 @@ char Contador = 0;
 
 void main(void){
   unsigned char aux=12;
-  int ax,ay,az,gx,gy,gz;
   OSCCON=0b01110000;
   _delay((unsigned long)((1)*(8000000/4000.0)));
-  TRISD=0x00;
-  LATD=0;
-  TRISB=0xFF;
-  TRISE=0;
-  LATE=0;
+
   TRISC=0;
   LATC=0;
+
+  TRISB0=1;
+  TRISB1=1;
   SSPCON1=0b00101000;
   SSPCON2=0b00000000;
   SSPSTAT=0b11000000;
-  SSPADD=19;
+  SSPADD=20;
   PIR1=0;
 
   while(1){
     _delay((unsigned long)((10)*(8000000/4000.0)));
-
-
-
       EnvioDato(0x10,1,Contador);
       aux = LecturaDato(0x10,0);
-      EnvioDato(0x10,0,5);
+      EnvioDato(0x10,0,0);
       Contador ++;
       if(Contador >= 10){
           Contador=0;
@@ -5674,8 +5669,6 @@ void main(void){
       else{
           LATC0=0;
       }
-
-
     LATC2=1;
     _delay((unsigned long)((1000)*(8000000/4000.0)));
     LATC2=0;
@@ -5696,30 +5689,39 @@ void Rstart(void){
 }
 void EnvioDato(unsigned char Direccion, unsigned char Registro, unsigned char Dato){
   Start();
-  SSPBUF=Direccion;
+
+  SSPBUF=Direccion & 0b11111110;
   SSPIF=0;
   while(SSPIF==0);
+
   SSPBUF=Registro;
   SSPIF=0;
   while(SSPIF==0);
+
   SSPBUF=Dato;
   SSPIF=0;
   while(SSPIF==0);
+
   SSPIF=0;
   Stop();
 }
 unsigned char LecturaDato(unsigned char Direccion, unsigned char Registro){
   Start();
+
   SSPBUF=Direccion & 0b11111110;
   SSPIF=0;
   while(SSPIF==0);
+
   SSPBUF=Registro;
   SSPIF=0;
   while(SSPIF==0);
+
   Rstart();
+
   SSPBUF=Direccion | 0b00000001;
   SSPIF=0;
   while(SSPIF==0);
+
   RCEN=1;
   SSPIF=0;
   while(SSPIF==0);
@@ -5734,28 +5736,24 @@ unsigned char LecturaDato(unsigned char Direccion, unsigned char Registro){
   return SSPBUF;
 }
 unsigned char LecturaDatoA(unsigned char Direccion){
-  while(RB2 == 1);
-  _delay((unsigned long)((500)*(8000000/4000.0)));
+
   Start();
   LATE2=1;
   LATE1=1;
 
-  while(RB2 == 1);
-    _delay((unsigned long)((500)*(8000000/4000.0)));
+
   SSPBUF=Direccion | 0b00000001;
   SSPIF=0;
   while(SSPIF==0);
   LATE2=0;
 
-  while(RB2 == 1);
-    _delay((unsigned long)((500)*(8000000/4000.0)));
+
   RCEN=1;
   SSPIF=0;
   while(SSPIF==0);
   LATE2=1;
 
-  while(RB2 == 1);
-    _delay((unsigned long)((500)*(8000000/4000.0)));
+
   Stop();
   LATE2=0;
   LATE1=0;
@@ -5764,30 +5762,23 @@ unsigned char LecturaDatoA(unsigned char Direccion){
 void EnvioDatoA(unsigned char Direccion, unsigned char Dato){
 
 
-    _delay((unsigned long)((500)*(8000000/4000.0)));
     Start();
     LATC0=1;
     LATC1=1;
 
 
-
-    _delay((unsigned long)((500)*(8000000/4000.0)));
     SSPBUF=Direccion;
     SSPIF=0;
     while(SSPIF==0);
     LATC0=0;
 
 
-
-    _delay((unsigned long)((500)*(8000000/4000.0)));
     SSPBUF=Dato;
     SSPIF=0;
     while(SSPIF==0);
     LATC0=1;
 
 
-
-    _delay((unsigned long)((500)*(8000000/4000.0)));
     SSPIF=0;
     Stop();
     LATC0=0;
