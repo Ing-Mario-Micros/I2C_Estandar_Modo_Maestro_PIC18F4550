@@ -1,0 +1,138 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"30 C:\Users\mario\MPLABXProjects\usb\I2C PIC18\I2C_Estandar_para_DS.X\Main18f_to_DS.c
+[v _main main `(v  1 e 1 0 ]
+"74
+[v _Start Start `(v  1 e 1 0 ]
+"78
+[v _Stop Stop `(v  1 e 1 0 ]
+"82
+[v _Rstart Rstart `(v  1 e 1 0 ]
+"86
+[v _EnvioDato EnvioDato `(v  1 e 1 0 ]
+"100
+[v _LecturaDato LecturaDato `(uc  1 e 1 0 ]
+"3185 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h
+[v _LATC LATC `VEuc  1 e 1 @3979 ]
+"3263
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+"3375
+[v _LATE LATE `VEuc  1 e 1 @3981 ]
+"3625
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"3847
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+"4001
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"4223
+[v _TRISE TRISE `VEuc  1 e 1 @3990 ]
+"4468
+[v _PIR1 PIR1 `VEuc  1 e 1 @3998 ]
+"6806
+[v _SSPCON2 SSPCON2 `VEuc  1 e 1 @4037 ]
+"6868
+[v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
+"6938
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
+"7186
+[v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
+"7193
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+"7986
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+"8910
+[v _ACKDT ACKDT `VEb  1 e 0 @32301 ]
+"8913
+[v _ACKEN ACKEN `VEb  1 e 0 @32300 ]
+"9972
+[v _LATC0 LATC0 `VEb  1 e 0 @31832 ]
+"9975
+[v _LATC1 LATC1 `VEb  1 e 0 @31833 ]
+"9978
+[v _LATC2 LATC2 `VEb  1 e 0 @31834 ]
+"10014
+[v _LATE1 LATE1 `VEb  1 e 0 @31849 ]
+"10017
+[v _LATE2 LATE2 `VEb  1 e 0 @31850 ]
+"10275
+[v _PEN PEN `VEb  1 e 0 @32298 ]
+"10365
+[v _RB2 RB2 `VEb  1 e 0 @31754 ]
+"10434
+[v _RCEN RCEN `VEb  1 e 0 @32299 ]
+"10515
+[v _RSEN RSEN `VEb  1 e 0 @32297 ]
+"10560
+[v _SEN SEN `VEb  1 e 0 @32296 ]
+"10644
+[v _SSPIF SSPIF `VEb  1 e 0 @31987 ]
+"28 C:\Users\mario\MPLABXProjects\usb\I2C PIC18\I2C_Estandar_para_DS.X\Main18f_to_DS.c
+[v _Contador Contador `uc  1 e 1 0 ]
+"30
+[v _main main `(v  1 e 1 0 ]
+{
+"31
+[v main@aux aux `uc  1 a 1 5 ]
+"73
+} 0
+"100
+[v _LecturaDato LecturaDato `(uc  1 e 1 0 ]
+{
+[v LecturaDato@Direccion Direccion `uc  1 a 1 wreg ]
+[v LecturaDato@Direccion Direccion `uc  1 a 1 wreg ]
+[v LecturaDato@Registro Registro `uc  1 p 1 0 ]
+[v LecturaDato@Direccion Direccion `uc  1 a 1 1 ]
+"124
+} 0
+"82
+[v _Rstart Rstart `(v  1 e 1 0 ]
+{
+"85
+} 0
+"86
+[v _EnvioDato EnvioDato `(v  1 e 1 0 ]
+{
+[v EnvioDato@Direccion Direccion `uc  1 a 1 wreg ]
+[v EnvioDato@Direccion Direccion `uc  1 a 1 wreg ]
+[v EnvioDato@Registro Registro `uc  1 p 1 0 ]
+[v EnvioDato@Dato Dato `uc  1 p 1 1 ]
+[v EnvioDato@Direccion Direccion `uc  1 a 1 2 ]
+"99
+} 0
+"78
+[v _Stop Stop `(v  1 e 1 0 ]
+{
+"81
+} 0
+"74
+[v _Start Start `(v  1 e 1 0 ]
+{
+"77
+} 0
