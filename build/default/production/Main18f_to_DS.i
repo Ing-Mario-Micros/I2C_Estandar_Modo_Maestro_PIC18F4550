@@ -5622,10 +5622,28 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 12 "Main18f_to_DS.c" 2
 
 
-#pragma config FOSC=INTOSC_EC
+
+#pragma config FOSC = HSPLL_HS
+#pragma config PLLDIV = 5
+#pragma config CPUDIV = OSC1_PLL2
+
+
+
+
+
+
 #pragma config WDT=OFF
 #pragma config LVP=OFF
 #pragma config PBADEN = OFF
+
+#pragma config XINST = OFF
+#pragma config USBDIV = 2
+#pragma config VREGEN = ON
+
+
+
+
+
 
 
 
@@ -5641,7 +5659,7 @@ char Contador = 0;
 void main(void){
   unsigned char aux=12;
   OSCCON=0b01110000;
-  _delay((unsigned long)((1)*(8000000/4000.0)));
+  _delay((unsigned long)((1)*(48000000/4000.0)));
 
   TRISC=0;
   LATC=0;
@@ -5651,14 +5669,14 @@ void main(void){
   SSPCON1=0b00101000;
   SSPCON2=0b00000000;
   SSPSTAT=0b11000000;
-  SSPADD=20;
+  SSPADD=120;
   PIR1=0;
 
   while(1){
-    _delay((unsigned long)((10)*(8000000/4000.0)));
+    _delay((unsigned long)((10)*(48000000/4000.0)));
       EnvioDato(0x10,1,Contador);
       aux = LecturaDato(0x10,0);
-      EnvioDato(0x10,0,0);
+      EnvioDato(0x10,0,8);
       Contador ++;
       if(Contador >= 10){
           Contador=0;
@@ -5670,9 +5688,9 @@ void main(void){
           LATC0=0;
       }
     LATC2=1;
-    _delay((unsigned long)((1000)*(8000000/4000.0)));
+    _delay((unsigned long)((1000)*(48000000/4000.0)));
     LATC2=0;
-    _delay((unsigned long)((1000)*(8000000/4000.0)));
+    _delay((unsigned long)((1000)*(48000000/4000.0)));
   }
 }
 void Start(void){

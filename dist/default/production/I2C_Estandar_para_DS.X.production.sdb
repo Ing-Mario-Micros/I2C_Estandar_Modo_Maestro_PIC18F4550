@@ -27,17 +27,17 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"30 C:\Users\mario\MPLABXProjects\usb\I2C PIC18\I2C_Estandar_para_DS.X\Main18f_to_DS.c
+"48 C:\Users\mario\MPLABXProjects\usb\I2C PIC18\I2C_Estandar_para_DS.X\Main18f_to_DS.c
 [v _main main `(v  1 e 1 0 ]
-"67
+"85
 [v _Start Start `(v  1 e 1 0 ]
-"71
+"89
 [v _Stop Stop `(v  1 e 1 0 ]
-"75
+"93
 [v _Rstart Rstart `(v  1 e 1 0 ]
-"79
-[v _EnvioDato EnvioDato `(v  1 e 1 0 ]
 "97
+[v _EnvioDato EnvioDato `(v  1 e 1 0 ]
+"115
 [v _LecturaDato LecturaDato `(uc  1 e 1 0 ]
 "3185 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4550.h
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
@@ -85,30 +85,30 @@
 [v _TRISB0 TRISB0 `VEb  1 e 0 @31896 ]
 "10905
 [v _TRISB1 TRISB1 `VEb  1 e 0 @31897 ]
-"28 C:\Users\mario\MPLABXProjects\usb\I2C PIC18\I2C_Estandar_para_DS.X\Main18f_to_DS.c
+"46 C:\Users\mario\MPLABXProjects\usb\I2C PIC18\I2C_Estandar_para_DS.X\Main18f_to_DS.c
 [v _Contador Contador `uc  1 e 1 0 ]
-"30
+"48
 [v _main main `(v  1 e 1 0 ]
 {
-"31
+"49
 [v main@aux aux `uc  1 a 1 5 ]
-"66
+"84
 } 0
-"97
+"115
 [v _LecturaDato LecturaDato `(uc  1 e 1 0 ]
 {
 [v LecturaDato@Direccion Direccion `uc  1 a 1 wreg ]
 [v LecturaDato@Direccion Direccion `uc  1 a 1 wreg ]
 [v LecturaDato@Registro Registro `uc  1 p 1 0 ]
 [v LecturaDato@Direccion Direccion `uc  1 a 1 1 ]
-"126
+"144
 } 0
-"75
+"93
 [v _Rstart Rstart `(v  1 e 1 0 ]
 {
-"78
+"96
 } 0
-"79
+"97
 [v _EnvioDato EnvioDato `(v  1 e 1 0 ]
 {
 [v EnvioDato@Direccion Direccion `uc  1 a 1 wreg ]
@@ -116,15 +116,15 @@
 [v EnvioDato@Registro Registro `uc  1 p 1 0 ]
 [v EnvioDato@Dato Dato `uc  1 p 1 1 ]
 [v EnvioDato@Direccion Direccion `uc  1 a 1 2 ]
-"96
+"114
 } 0
-"71
+"89
 [v _Stop Stop `(v  1 e 1 0 ]
 {
-"74
+"92
 } 0
-"67
+"85
 [v _Start Start `(v  1 e 1 0 ]
 {
-"70
+"88
 } 0
