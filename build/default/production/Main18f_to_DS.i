@@ -5621,78 +5621,30 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 12 "Main18f_to_DS.c" 2
 
-
-
-#pragma config FOSC = HSPLL_HS
-#pragma config PLLDIV = 5
-#pragma config CPUDIV = OSC1_PLL2
-
-
-
-
-
-
-#pragma config WDT=OFF
-#pragma config LVP=OFF
-#pragma config PBADEN = OFF
-
-#pragma config XINST = OFF
-#pragma config USBDIV = 2
-#pragma config VREGEN = ON
-
-
-
-
-
-
-
+# 1 "./I2C.h" 1
+# 24 "./I2C.h"
+void Activar_I2C(void);
 
 void Start(void);
 void Stop(void);
 void Rstart(void);
+
 void EnvioDato(unsigned char,unsigned char,unsigned char);
 unsigned char LecturaDato(unsigned char,unsigned char);
 unsigned char LecturaDatoA(unsigned char);
 void EnvioDatoA(unsigned char Direccion, unsigned char Dato);
-char Contador = 0;
 
-void main(void){
-  unsigned char aux=12;
-  OSCCON=0b01110000;
-  _delay((unsigned long)((1)*(48000000/4000.0)));
+void Activar_I2C(void){
+    TRISB0=1;
+    TRISB1=1;
+    SSPCON1=0b00101000;
+    SSPCON2=0b00000000;
+    SSPSTAT=0b11000000;
+    SSPADD=120;
+    PIR1=0;
 
-  TRISC=0;
-  LATC=0;
-
-  TRISB0=1;
-  TRISB1=1;
-  SSPCON1=0b00101000;
-  SSPCON2=0b00000000;
-  SSPSTAT=0b11000000;
-  SSPADD=120;
-  PIR1=0;
-
-  while(1){
-    _delay((unsigned long)((10)*(48000000/4000.0)));
-      EnvioDato(0x10,1,Contador);
-      aux = LecturaDato(0x10,0);
-      EnvioDato(0x10,0,8);
-      Contador ++;
-      if(Contador >= 10){
-          Contador=0;
-      }
-      if(aux==0){
-          LATC0=1;
-      }
-      else{
-          LATC0=0;
-      }
-    LATC2=1;
-    _delay((unsigned long)((1000)*(48000000/4000.0)));
-    LATC2=0;
-    _delay((unsigned long)((1000)*(48000000/4000.0)));
-  }
 }
+
 void Start(void){
   SEN=1;
   while(SEN==1);
@@ -5705,6 +5657,7 @@ void Rstart(void){
   RSEN=1;
   while(RSEN==1);
 }
+
 void EnvioDato(unsigned char Direccion, unsigned char Registro, unsigned char Dato){
   Start();
 
@@ -5801,4 +5754,63 @@ void EnvioDatoA(unsigned char Direccion, unsigned char Dato){
     Stop();
     LATC0=0;
     LATC1=0;
+}
+# 13 "Main18f_to_DS.c" 2
+
+
+
+#pragma config FOSC = HSPLL_HS
+#pragma config PLLDIV = 5
+#pragma config CPUDIV = OSC1_PLL2
+
+
+
+
+
+
+#pragma config WDT=OFF
+#pragma config LVP=OFF
+#pragma config PBADEN = OFF
+
+#pragma config XINST = OFF
+#pragma config USBDIV = 2
+#pragma config VREGEN = ON
+# 42 "Main18f_to_DS.c"
+char Contador = 0;
+
+void main(void){
+  unsigned char aux=12;
+
+
+  OSCCON=0b01110000;
+  _delay((unsigned long)((1)*(48000000/4000.0)));
+
+
+  TRISC=0;
+  LATC=0;
+
+
+  Activar_I2C();
+
+
+  while(1){
+    _delay((unsigned long)((10)*(48000000/4000.0)));
+      EnvioDato(0x10,1,Contador);
+      aux = LecturaDato(0x10,0);
+      EnvioDato(0x10,0,0);
+      Contador ++;
+      if(Contador >= 10){
+          Contador=0;
+      }
+      if(aux==0){
+          LATC2=1;
+      }
+      else{
+          LATC2=0;
+      }
+    LATC1=1;
+    _delay((unsigned long)((1000)*(48000000/4000.0)));
+    LATC1=0;
+    _delay((unsigned long)((1000)*(48000000/4000.0)));
+  }
 }

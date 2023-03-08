@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Tue Mar 07 23:08:47 2023
+                                                                                               Wed Mar 08 06:59:35 2023
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	18F4550
@@ -17,745 +17,787 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
     11                           	psect	text3,global,reloc=2,class=CODE,delta=1
     12                           	psect	text4,global,reloc=2,class=CODE,delta=1
     13                           	psect	text5,global,reloc=2,class=CODE,delta=1
-    14                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
-    15                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
-    16  0000                     
-    17                           ; Version 2.10
-    18                           ; Generated 31/07/2019 GMT
-    19                           ; 
-    20                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    21                           ; All rights reserved.
-    22                           ; 
-    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+    14                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    15                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    16                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    17  0000                     
+    18                           ; Version 2.10
+    19                           ; Generated 31/07/2019 GMT
+    20                           ; 
+    21                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    22                           ; All rights reserved.
+    23                           ; 
+    24                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    24                           ; 
-    25                           ; Redistribution and use in source and binary forms, with or without modification, are
-    26                           ; permitted provided that the following conditions are met:
-    27                           ; 
-    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    25                           ; 
+    26                           ; Redistribution and use in source and binary forms, with or without modification, are
+    27                           ; permitted provided that the following conditions are met:
+    28                           ; 
+    29                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    29                           ;        conditions and the following disclaimer.
-    30                           ; 
-    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    30                           ;        conditions and the following disclaimer.
+    31                           ; 
+    32                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    32                           ;        of conditions and the following disclaimer in the documentation and/or other
-    33                           ;        materials provided with the distribution.
-    34                           ; 
-    35                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    33                           ;        of conditions and the following disclaimer in the documentation and/or other
+    34                           ;        materials provided with the distribution.
+    35                           ; 
+    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    36                           ;        software without specific prior written permission.
-    37                           ; 
-    38                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    39                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    37                           ;        software without specific prior written permission.
+    38                           ; 
+    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    40                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    41                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    42                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    43                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    44                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    45                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    46                           ; 
+    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     47                           ; 
-    48                           ; Code-generator required, PIC18F4550 Definitions
-    49                           ; 
-    50                           ; SFR Addresses
-    51  0000                     _SSPBUF	set	4041
-    52  0000                     _PIR1	set	3998
-    53  0000                     _SSPADD	set	4040
-    54  0000                     _SSPSTAT	set	4039
-    55  0000                     _SSPCON2	set	4037
-    56  0000                     _SSPCON1	set	4038
-    57  0000                     _LATC	set	3979
-    58  0000                     _TRISC	set	3988
-    59  0000                     _OSCCON	set	4051
-    60  0000                     _LATC1	set	31833
-    61  0000                     _LATE1	set	31849
-    62  0000                     _LATE2	set	31850
-    63  0000                     _ACKEN	set	32300
-    64  0000                     _ACKDT	set	32301
-    65  0000                     _RCEN	set	32299
-    66  0000                     _SSPIF	set	31987
-    67  0000                     _RSEN	set	32297
-    68  0000                     _PEN	set	32298
-    69  0000                     _SEN	set	32296
-    70  0000                     _LATC2	set	31834
-    71  0000                     _LATC0	set	31832
-    72  0000                     _TRISB1	set	31897
-    73  0000                     _TRISB0	set	31896
-    74                           
-    75                           ; #config settings
-    76  0000                     
-    77                           	psect	cinit
-    78  007E2C                     __pcinit:
-    79                           	opt callstack 0
-    80  007E2C                     start_initialization:
-    81                           	opt callstack 0
-    82  007E2C                     __initialization:
-    83                           	opt callstack 0
-    84                           
-    85                           ; Clear objects allocated to COMRAM (1 bytes)
-    86  007E2C  6A07               	clrf	__pbssCOMRAM& (0+255),c
-    87  007E2E                     end_of_initialization:
-    88                           	opt callstack 0
-    89  007E2E                     __end_of__initialization:
-    90                           	opt callstack 0
-    91  007E2E  0100               	movlb	0
-    92  007E30  EF97  F03F         	goto	_main	;jump to C main() function
-    93                           
-    94                           	psect	bssCOMRAM
-    95  000007                     __pbssCOMRAM:
-    96                           	opt callstack 0
-    97  000007                     _Contador:
-    98                           	opt callstack 0
-    99  000007                     	ds	1
-   100                           
-   101                           	psect	cstackCOMRAM
-   102  000001                     __pcstackCOMRAM:
-   103                           	opt callstack 0
-   104  000001                     EnvioDato@Registro:
-   105                           	opt callstack 0
-   106  000001                     LecturaDato@Registro:
-   107                           	opt callstack 0
-   108                           
-   109                           ; 1 bytes @ 0x0
-   110  000001                     	ds	1
-   111  000002                     EnvioDato@Dato:
-   112                           	opt callstack 0
-   113  000002                     LecturaDato@Direccion:
-   114                           	opt callstack 0
-   115                           
-   116                           ; 1 bytes @ 0x1
-   117  000002                     	ds	1
-   118  000003                     EnvioDato@Direccion:
-   119                           	opt callstack 0
-   120                           
-   121                           ; 1 bytes @ 0x2
-   122  000003                     	ds	1
-   123  000004                     ??_main:
-   124                           
-   125                           ; 1 bytes @ 0x3
-   126  000004                     	ds	2
-   127  000006                     main@aux:
-   128                           	opt callstack 0
-   129                           
-   130                           ; 1 bytes @ 0x5
-   131  000006                     	ds	1
-   132                           
-   133 ;;
-   134 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
-   135 ;;
-   136 ;; *************** function _main *****************
-   137 ;; Defined at:
-   138 ;;		line 48 in file "Main18f_to_DS.c"
-   139 ;; Parameters:    Size  Location     Type
-   140 ;;		None
-   141 ;; Auto vars:     Size  Location     Type
-   142 ;;  aux             1    5[COMRAM] unsigned char 
-   143 ;; Return value:  Size  Location     Type
-   144 ;;                  1    wreg      void 
-   145 ;; Registers used:
-   146 ;;		wreg, status,2, status,0, cstack
-   147 ;; Tracked objects:
-   148 ;;		On entry : 0/0
-   149 ;;		On exit  : 0/0
-   150 ;;		Unchanged: 0/0
-   151 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   152 ;;      Params:         0       0       0       0       0       0       0       0       0
-   153 ;;      Locals:         1       0       0       0       0       0       0       0       0
-   154 ;;      Temps:          2       0       0       0       0       0       0       0       0
-   155 ;;      Totals:         3       0       0       0       0       0       0       0       0
-   156 ;;Total ram usage:        3 bytes
-   157 ;; Hardware stack levels required when called:    2
-   158 ;; This function calls:
-   159 ;;		_EnvioDato
-   160 ;;		_LecturaDato
-   161 ;; This function is called by:
-   162 ;;		Startup code after reset
-   163 ;; This function uses a non-reentrant model
-   164 ;;
-   165                           
-   166                           	psect	text0
-   167  007F2E                     __ptext0:
-   168                           	opt callstack 0
-   169  007F2E                     _main:
-   170                           	opt callstack 29
-   171  007F2E                     
-   172                           ;Main18f_to_DS.c: 50:     _delay((unsigned long)((1000)*(48000000/4000.0)));
-   173  007F2E  0E70               	movlw	112
-   174  007F30  6ED3               	movwf	211,c	;volatile
-   175  007F32                     
-   176                           ;Main18f_to_DS.c: 51:   }
-   177  007F32  0E10               	movlw	16
-   178  007F34  6E04               	movwf	??_main^0,c
-   179  007F36  0E94               	movlw	148
-   180  007F38                     u287:
-   181  007F38  2EE8               	decfsz	wreg,f,c
-   182  007F3A  D7FE               	bra	u287
-   183  007F3C  2E04               	decfsz	??_main^0,f,c
-   184  007F3E  D7FC               	bra	u287
-   185  007F40  D000               	nop2	
-   186  007F42                     
-   187                           ;Main18f_to_DS.c: 53: void Start(void){
-   188  007F42  0E00               	movlw	0
-   189  007F44  6E94               	movwf	148,c	;volatile
-   190  007F46                     
-   191                           ;Main18f_to_DS.c: 54:   SEN=1;
-   192  007F46  0E00               	movlw	0
-   193  007F48  6E8B               	movwf	139,c	;volatile
-   194  007F4A                     
-   195                           ;Main18f_to_DS.c: 56: }
-   196  007F4A  8093               	bsf	3987,0,c	;volatile
-   197  007F4C                     
-   198                           ;Main18f_to_DS.c: 57: void Stop(void){
-   199  007F4C  8293               	bsf	3987,1,c	;volatile
-   200  007F4E                     
-   201                           ;Main18f_to_DS.c: 58:   PEN=1;
-   202  007F4E  0E28               	movlw	40
-   203  007F50  6EC6               	movwf	198,c	;volatile
-   204  007F52                     
-   205                           ;Main18f_to_DS.c: 59:   while(PEN==1);
-   206  007F52  0E00               	movlw	0
-   207  007F54  6EC5               	movwf	197,c	;volatile
-   208  007F56                     
-   209                           ;Main18f_to_DS.c: 60: }
-   210  007F56  0EC0               	movlw	192
-   211  007F58  6EC7               	movwf	199,c	;volatile
-   212  007F5A                     
-   213                           ;Main18f_to_DS.c: 61: void Rstart(void){
-   214  007F5A  0E78               	movlw	120
-   215  007F5C  6EC8               	movwf	200,c	;volatile
-   216  007F5E                     
-   217                           ;Main18f_to_DS.c: 62:   RSEN=1;
-   218  007F5E  0E00               	movlw	0
-   219  007F60  6E9E               	movwf	158,c	;volatile
-   220  007F62                     l59:
-   221                           
-   222                           ;Main18f_to_DS.c: 65: void EnvioDato(unsigned char Direccion, unsigned char Registro, un
-      +                          signed char Dato){
-   223  007F62  0E9C               	movlw	156
-   224  007F64  6E04               	movwf	??_main^0,c
-   225  007F66  0ED7               	movlw	215
-   226  007F68                     u297:
-   227  007F68  2EE8               	decfsz	wreg,f,c
-   228  007F6A  D7FE               	bra	u297
-   229  007F6C  2E04               	decfsz	??_main^0,f,c
-   230  007F6E  D7FC               	bra	u297
-   231  007F70  F000               	nop	
-   232  007F72                     
-   233                           ;Main18f_to_DS.c: 66:   Start();
-   234  007F72  0E01               	movlw	1
-   235  007F74  6E01               	movwf	EnvioDato@Registro^0,c
-   236  007F76  C007  F002         	movff	_Contador,EnvioDato@Dato
-   237  007F7A  0E10               	movlw	16
-   238  007F7C  EC35  F03F         	call	_EnvioDato
-   239  007F80                     
-   240                           ;Main18f_to_DS.c: 67: 
-   241  007F80  0E00               	movlw	0
-   242  007F82  6E01               	movwf	LecturaDato@Registro^0,c
-   243  007F84  0E10               	movlw	16
-   244  007F86  EC5B  F03F         	call	_LecturaDato
-   245  007F8A  6E06               	movwf	main@aux^0,c
-   246  007F8C                     
-   247                           ;Main18f_to_DS.c: 68:   SSPBUF=Direccion & 0b11111110;
-   248  007F8C  0E00               	movlw	0
-   249  007F8E  6E01               	movwf	EnvioDato@Registro^0,c
-   250  007F90  0E08               	movlw	8
-   251  007F92  6E02               	movwf	EnvioDato@Dato^0,c
-   252  007F94  0E10               	movlw	16
-   253  007F96  EC35  F03F         	call	_EnvioDato
-   254  007F9A                     
-   255                           ;Main18f_to_DS.c: 69:   SSPIF=0;
-   256  007F9A  2A07               	incf	_Contador^0,f,c
-   257  007F9C                     
-   258                           ;Main18f_to_DS.c: 70:   while(SSPIF==0);
-   259  007F9C  0E09               	movlw	9
-   260  007F9E  6407               	cpfsgt	_Contador^0,c
-   261  007FA0  EFD4  F03F         	goto	u261
-   262  007FA4  EFD6  F03F         	goto	u260
-   263  007FA8                     u261:
-   264  007FA8  EFD8  F03F         	goto	l60
-   265  007FAC                     u260:
-   266  007FAC                     
-   267                           ;Main18f_to_DS.c: 71: 
-   268  007FAC  0E00               	movlw	0
-   269  007FAE  6E07               	movwf	_Contador^0,c
-   270  007FB0                     l60:
-   271                           
-   272                           ;Main18f_to_DS.c: 73:   SSPIF=0;
-   273  007FB0  5006               	movf	main@aux^0,w,c
-   274  007FB2  A4D8               	btfss	status,2,c
-   275  007FB4  EFDE  F03F         	goto	u271
-   276  007FB8  EFE0  F03F         	goto	u270
-   277  007FBC                     u271:
-   278  007FBC  EFE3  F03F         	goto	l61
-   279  007FC0                     u270:
-   280  007FC0                     
-   281                           ;Main18f_to_DS.c: 74:   while(SSPIF==0);
-   282  007FC0  808B               	bsf	3979,0,c	;volatile
-   283                           
-   284                           ;Main18f_to_DS.c: 75: 
-   285  007FC2  EFE4  F03F         	goto	l62
-   286  007FC6                     l61:
-   287                           
-   288                           ;Main18f_to_DS.c: 77:   SSPIF=0;
-   289  007FC6  908B               	bcf	3979,0,c	;volatile
-   290  007FC8                     l62:
-   291                           
-   292                           ;Main18f_to_DS.c: 79: 
-   293  007FC8  848B               	bsf	3979,2,c	;volatile
-   294  007FCA                     
-   295                           ;Main18f_to_DS.c: 80:   SSPIF=0;
-   296  007FCA  0E3D               	movlw	61
-   297  007FCC  6E05               	movwf	(??_main+1)^0,c
-   298  007FCE  0EE1               	movlw	225
-   299  007FD0  6E04               	movwf	??_main^0,c
-   300  007FD2  0E40               	movlw	64
-   301  007FD4                     u307:
-   302  007FD4  2EE8               	decfsz	wreg,f,c
-   303  007FD6  D7FE               	bra	u307
-   304  007FD8  2E04               	decfsz	??_main^0,f,c
-   305  007FDA  D7FC               	bra	u307
-   306  007FDC  2E05               	decfsz	(??_main+1)^0,f,c
-   307  007FDE  D7FA               	bra	u307
-   308  007FE0                     
-   309                           ;Main18f_to_DS.c: 81:   Stop();
-   310  007FE0  948B               	bcf	3979,2,c	;volatile
-   311                           
-   312                           ;Main18f_to_DS.c: 82: }
-   313  007FE2  0E3D               	movlw	61
-   314  007FE4  6E05               	movwf	(??_main+1)^0,c
-   315  007FE6  0EE1               	movlw	225
-   316  007FE8  6E04               	movwf	??_main^0,c
-   317  007FEA  0E40               	movlw	64
-   318  007FEC                     u317:
-   319  007FEC  2EE8               	decfsz	wreg,f,c
-   320  007FEE  D7FE               	bra	u317
-   321  007FF0  2E04               	decfsz	??_main^0,f,c
-   322  007FF2  D7FC               	bra	u317
-   323  007FF4  2E05               	decfsz	(??_main+1)^0,f,c
-   324  007FF6  D7FA               	bra	u317
-   325  007FF8  EFB1  F03F         	goto	l59
-   326  007FFC  EF00  F000         	goto	start
-   327  008000                     __end_of_main:
-   328                           	opt callstack 0
-   329                           
-   330 ;; *************** function _LecturaDato *****************
-   331 ;; Defined at:
-   332 ;;		line 115 in file "Main18f_to_DS.c"
-   333 ;; Parameters:    Size  Location     Type
-   334 ;;  Direccion       1    wreg     unsigned char 
-   335 ;;  Registro        1    0[COMRAM] unsigned char 
-   336 ;; Auto vars:     Size  Location     Type
-   337 ;;  Direccion       1    1[COMRAM] unsigned char 
-   338 ;; Return value:  Size  Location     Type
-   339 ;;                  1    wreg      unsigned char 
-   340 ;; Registers used:
-   341 ;;		wreg, status,2, status,0, cstack
-   342 ;; Tracked objects:
-   343 ;;		On entry : 0/0
-   344 ;;		On exit  : 0/0
-   345 ;;		Unchanged: 0/0
-   346 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   347 ;;      Params:         1       0       0       0       0       0       0       0       0
-   348 ;;      Locals:         1       0       0       0       0       0       0       0       0
-   349 ;;      Temps:          0       0       0       0       0       0       0       0       0
-   350 ;;      Totals:         2       0       0       0       0       0       0       0       0
-   351 ;;Total ram usage:        2 bytes
-   352 ;; Hardware stack levels used:    1
-   353 ;; Hardware stack levels required when called:    1
-   354 ;; This function calls:
-   355 ;;		_Rstart
-   356 ;;		_Start
-   357 ;;		_Stop
-   358 ;; This function is called by:
-   359 ;;		_main
-   360 ;; This function uses a non-reentrant model
-   361 ;;
-   362                           
-   363                           	psect	text1
-   364  007EB6                     __ptext1:
-   365                           	opt callstack 0
-   366  007EB6                     _LecturaDato:
-   367                           	opt callstack 29
-   368                           
-   369                           ;incstack = 0
-   370                           ;LecturaDato@Direccion stored from wreg
-   371  007EB6  6E02               	movwf	LecturaDato@Direccion^0,c
-   372  007EB8                     
-   373                           ;Main18f_to_DS.c: 116:   LATE2=1;
-   374  007EB8  EC1A  F03F         	call	_Start	;wreg free
-   375  007EBC                     
-   376                           ;Main18f_to_DS.c: 118: 
-   377  007EBC  5002               	movf	LecturaDato@Direccion^0,w,c
-   378  007EBE  0BFE               	andlw	254
-   379  007EC0  6EC9               	movwf	201,c	;volatile
-   380  007EC2                     
-   381                           ;Main18f_to_DS.c: 119: 
-   382  007EC2  969E               	bcf	3998,3,c	;volatile
-   383  007EC4                     l98:
-   384  007EC4  A69E               	btfss	3998,3,c	;volatile
-   385  007EC6  EF67  F03F         	goto	u211
-   386  007ECA  EF69  F03F         	goto	u210
-   387  007ECE                     u211:
-   388  007ECE  EF62  F03F         	goto	l98
-   389  007ED2                     u210:
-   390  007ED2                     
-   391                           ;Main18f_to_DS.c: 122:   while(SSPIF==0);
-   392  007ED2  C001  FFC9         	movff	LecturaDato@Registro,4041	;volatile
-   393                           
-   394                           ;Main18f_to_DS.c: 123:   LATE2=0;
-   395  007ED6  969E               	bcf	3998,3,c	;volatile
-   396  007ED8                     l101:
-   397  007ED8  A69E               	btfss	3998,3,c	;volatile
-   398  007EDA  EF71  F03F         	goto	u221
-   399  007EDE  EF73  F03F         	goto	u220
-   400  007EE2                     u221:
-   401  007EE2  EF6C  F03F         	goto	l101
-   402  007EE6                     u220:
-   403  007EE6                     
-   404                           ;Main18f_to_DS.c: 126:   RCEN=1;
-   405  007EE6  EC2C  F03F         	call	_Rstart	;wreg free
-   406  007EEA                     
-   407                           ;Main18f_to_DS.c: 128:   while(SSPIF==0);
-   408  007EEA  5002               	movf	LecturaDato@Direccion^0,w,c
-   409  007EEC  0901               	iorlw	1
-   410  007EEE  6EC9               	movwf	201,c	;volatile
-   411  007EF0                     
-   412                           ;Main18f_to_DS.c: 129:   LATE2=1;
-   413  007EF0  969E               	bcf	3998,3,c	;volatile
-   414  007EF2                     l104:
-   415  007EF2  A69E               	btfss	3998,3,c	;volatile
-   416  007EF4  EF7E  F03F         	goto	u231
-   417  007EF8  EF80  F03F         	goto	u230
-   418  007EFC                     u231:
-   419  007EFC  EF79  F03F         	goto	l104
-   420  007F00                     u230:
-   421  007F00                     
-   422                           ;Main18f_to_DS.c: 132:   Stop();
-   423  007F00  86C5               	bsf	4037,3,c	;volatile
-   424                           
-   425                           ;Main18f_to_DS.c: 133:   LATE2=0;
-   426  007F02  969E               	bcf	3998,3,c	;volatile
-   427  007F04                     l107:
-   428  007F04  A69E               	btfss	3998,3,c	;volatile
-   429  007F06  EF87  F03F         	goto	u241
-   430  007F0A  EF89  F03F         	goto	u240
-   431  007F0E                     u241:
-   432  007F0E  EF82  F03F         	goto	l107
-   433  007F12                     u240:
-   434  007F12                     
-   435                           ;Main18f_to_DS.c: 136: }
-   436  007F12  969E               	bcf	3998,3,c	;volatile
-   437                           
-   438                           ;Main18f_to_DS.c: 137: void EnvioDatoA(unsigned char Direccion, unsigned char Dato){
-   439  007F14  8AC5               	bsf	4037,5,c	;volatile
-   440                           
-   441                           ;Main18f_to_DS.c: 138: 
-   442  007F16  88C5               	bsf	4037,4,c	;volatile
-   443  007F18                     l110:
-   444  007F18  A69E               	btfss	3998,3,c	;volatile
-   445  007F1A  EF91  F03F         	goto	u251
-   446  007F1E  EF93  F03F         	goto	u250
-   447  007F22                     u251:
-   448  007F22  EF8C  F03F         	goto	l110
-   449  007F26                     u250:
-   450  007F26                     
-   451                           ;Main18f_to_DS.c: 142:     LATC1=1;
-   452  007F26  EC23  F03F         	call	_Stop	;wreg free
-   453  007F2A                     
-   454                           ;Main18f_to_DS.c: 143: 
-   455  007F2A  50C9               	movf	201,w,c	;volatile
-   456  007F2C  0012               	return		;funcret
-   457  007F2E                     __end_of_LecturaDato:
-   458                           	opt callstack 0
-   459                           
-   460 ;; *************** function _Rstart *****************
-   461 ;; Defined at:
-   462 ;;		line 93 in file "Main18f_to_DS.c"
-   463 ;; Parameters:    Size  Location     Type
-   464 ;;		None
-   465 ;; Auto vars:     Size  Location     Type
-   466 ;;		None
-   467 ;; Return value:  Size  Location     Type
-   468 ;;                  1    wreg      void 
-   469 ;; Registers used:
-   470 ;;		None
-   471 ;; Tracked objects:
-   472 ;;		On entry : 0/0
-   473 ;;		On exit  : 0/0
-   474 ;;		Unchanged: 0/0
-   475 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   476 ;;      Params:         0       0       0       0       0       0       0       0       0
-   477 ;;      Locals:         0       0       0       0       0       0       0       0       0
-   478 ;;      Temps:          0       0       0       0       0       0       0       0       0
-   479 ;;      Totals:         0       0       0       0       0       0       0       0       0
-   480 ;;Total ram usage:        0 bytes
-   481 ;; Hardware stack levels used:    1
-   482 ;; This function calls:
-   483 ;;		Nothing
-   484 ;; This function is called by:
-   485 ;;		_LecturaDato
-   486 ;; This function uses a non-reentrant model
-   487 ;;
-   488                           
-   489                           	psect	text2
-   490  007E58                     __ptext2:
-   491                           	opt callstack 0
-   492  007E58                     _Rstart:
-   493                           	opt callstack 29
-   494  007E58                     
-   495                           ;Main18f_to_DS.c: 94:   Rstart();
-   496  007E58  82C5               	bsf	4037,1,c	;volatile
-   497  007E5A                     l80:
-   498  007E5A  B2C5               	btfsc	4037,1,c	;volatile
-   499  007E5C  EF32  F03F         	goto	u31
-   500  007E60  EF34  F03F         	goto	u30
-   501  007E64                     u31:
-   502  007E64  EF2D  F03F         	goto	l80
-   503  007E68                     u30:
-   504  007E68  0012               	return		;funcret
-   505  007E6A                     __end_of_Rstart:
-   506                           	opt callstack 0
-   507                           
-   508 ;; *************** function _EnvioDato *****************
-   509 ;; Defined at:
-   510 ;;		line 97 in file "Main18f_to_DS.c"
-   511 ;; Parameters:    Size  Location     Type
-   512 ;;  Direccion       1    wreg     unsigned char 
-   513 ;;  Registro        1    0[COMRAM] unsigned char 
-   514 ;;  Dato            1    1[COMRAM] unsigned char 
-   515 ;; Auto vars:     Size  Location     Type
-   516 ;;  Direccion       1    2[COMRAM] unsigned char 
-   517 ;; Return value:  Size  Location     Type
-   518 ;;                  1    wreg      void 
-   519 ;; Registers used:
-   520 ;;		wreg, status,2, status,0, cstack
-   521 ;; Tracked objects:
-   522 ;;		On entry : 0/0
-   523 ;;		On exit  : 0/0
-   524 ;;		Unchanged: 0/0
-   525 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   526 ;;      Params:         2       0       0       0       0       0       0       0       0
-   527 ;;      Locals:         1       0       0       0       0       0       0       0       0
-   528 ;;      Temps:          0       0       0       0       0       0       0       0       0
-   529 ;;      Totals:         3       0       0       0       0       0       0       0       0
-   530 ;;Total ram usage:        3 bytes
-   531 ;; Hardware stack levels used:    1
-   532 ;; Hardware stack levels required when called:    1
-   533 ;; This function calls:
-   534 ;;		_Start
-   535 ;;		_Stop
-   536 ;; This function is called by:
-   537 ;;		_main
-   538 ;; This function uses a non-reentrant model
-   539 ;;
-   540                           
-   541                           	psect	text3
-   542  007E6A                     __ptext3:
-   543                           	opt callstack 0
-   544  007E6A                     _EnvioDato:
-   545                           	opt callstack 29
-   546                           
-   547                           ;incstack = 0
-   548                           ;EnvioDato@Direccion stored from wreg
-   549  007E6A  6E03               	movwf	EnvioDato@Direccion^0,c
-   550  007E6C                     
-   551                           ;Main18f_to_DS.c: 98:   while(SSPIF==0);
-   552  007E6C  EC1A  F03F         	call	_Start	;wreg free
-   553  007E70                     
-   554                           ;Main18f_to_DS.c: 100:   RCEN=1;
-   555  007E70  5003               	movf	EnvioDato@Direccion^0,w,c
-   556  007E72  0BFE               	andlw	254
-   557  007E74  6EC9               	movwf	201,c	;volatile
-   558  007E76                     
-   559                           ;Main18f_to_DS.c: 101:   SSPIF=0;
-   560  007E76  969E               	bcf	3998,3,c	;volatile
-   561  007E78                     l86:
-   562  007E78  A69E               	btfss	3998,3,c	;volatile
-   563  007E7A  EF41  F03F         	goto	u181
-   564  007E7E  EF43  F03F         	goto	u180
-   565  007E82                     u181:
-   566  007E82  EF3C  F03F         	goto	l86
-   567  007E86                     u180:
-   568  007E86                     
-   569                           ;Main18f_to_DS.c: 104:   SSPIF = 0;
-   570  007E86  C001  FFC9         	movff	EnvioDato@Registro,4041	;volatile
-   571                           
-   572                           ;Main18f_to_DS.c: 105:   ACKDT = 1;
-   573  007E8A  969E               	bcf	3998,3,c	;volatile
-   574  007E8C                     l89:
-   575  007E8C  A69E               	btfss	3998,3,c	;volatile
-   576  007E8E  EF4B  F03F         	goto	u191
-   577  007E92  EF4D  F03F         	goto	u190
-   578  007E96                     u191:
-   579  007E96  EF46  F03F         	goto	l89
-   580  007E9A                     u190:
-   581  007E9A                     
-   582                           ;Main18f_to_DS.c: 108: 
-   583  007E9A  C002  FFC9         	movff	EnvioDato@Dato,4041	;volatile
-   584                           
-   585                           ;Main18f_to_DS.c: 109: 
-   586  007E9E  969E               	bcf	3998,3,c	;volatile
-   587  007EA0                     l92:
-   588  007EA0  A69E               	btfss	3998,3,c	;volatile
-   589  007EA2  EF55  F03F         	goto	u201
-   590  007EA6  EF57  F03F         	goto	u200
-   591  007EAA                     u201:
-   592  007EAA  EF50  F03F         	goto	l92
-   593  007EAE                     u200:
-   594  007EAE                     
-   595                           ;Main18f_to_DS.c: 112: }
-   596  007EAE  969E               	bcf	3998,3,c	;volatile
-   597  007EB0                     
-   598                           ;Main18f_to_DS.c: 113: unsigned char LecturaDatoA(unsigned char Direccion){
-   599  007EB0  EC23  F03F         	call	_Stop	;wreg free
-   600  007EB4  0012               	return		;funcret
-   601  007EB6                     __end_of_EnvioDato:
-   602                           	opt callstack 0
-   603                           
-   604 ;; *************** function _Stop *****************
-   605 ;; Defined at:
-   606 ;;		line 89 in file "Main18f_to_DS.c"
-   607 ;; Parameters:    Size  Location     Type
-   608 ;;		None
-   609 ;; Auto vars:     Size  Location     Type
-   610 ;;		None
-   611 ;; Return value:  Size  Location     Type
-   612 ;;                  1    wreg      void 
-   613 ;; Registers used:
-   614 ;;		None
-   615 ;; Tracked objects:
-   616 ;;		On entry : 0/0
-   617 ;;		On exit  : 0/0
-   618 ;;		Unchanged: 0/0
-   619 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   620 ;;      Params:         0       0       0       0       0       0       0       0       0
-   621 ;;      Locals:         0       0       0       0       0       0       0       0       0
-   622 ;;      Temps:          0       0       0       0       0       0       0       0       0
-   623 ;;      Totals:         0       0       0       0       0       0       0       0       0
-   624 ;;Total ram usage:        0 bytes
-   625 ;; Hardware stack levels used:    1
-   626 ;; This function calls:
-   627 ;;		Nothing
-   628 ;; This function is called by:
-   629 ;;		_EnvioDato
-   630 ;;		_LecturaDato
-   631 ;;		_LecturaDatoA
-   632 ;;		_EnvioDatoA
-   633 ;; This function uses a non-reentrant model
-   634 ;;
-   635                           
-   636                           	psect	text4
-   637  007E46                     __ptext4:
-   638                           	opt callstack 0
-   639  007E46                     _Stop:
-   640                           	opt callstack 29
-   641  007E46                     
-   642                           ;Main18f_to_DS.c: 90:   SSPBUF=Registro;
-   643  007E46  84C5               	bsf	4037,2,c	;volatile
-   644  007E48                     l74:
-   645  007E48  B4C5               	btfsc	4037,2,c	;volatile
-   646  007E4A  EF29  F03F         	goto	u21
-   647  007E4E  EF2B  F03F         	goto	u20
-   648  007E52                     u21:
-   649  007E52  EF24  F03F         	goto	l74
-   650  007E56                     u20:
-   651  007E56  0012               	return		;funcret
-   652  007E58                     __end_of_Stop:
-   653                           	opt callstack 0
-   654                           
-   655 ;; *************** function _Start *****************
-   656 ;; Defined at:
-   657 ;;		line 85 in file "Main18f_to_DS.c"
-   658 ;; Parameters:    Size  Location     Type
-   659 ;;		None
-   660 ;; Auto vars:     Size  Location     Type
-   661 ;;		None
-   662 ;; Return value:  Size  Location     Type
-   663 ;;                  1    wreg      void 
-   664 ;; Registers used:
-   665 ;;		None
-   666 ;; Tracked objects:
-   667 ;;		On entry : 0/0
-   668 ;;		On exit  : 0/0
-   669 ;;		Unchanged: 0/0
-   670 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   671 ;;      Params:         0       0       0       0       0       0       0       0       0
-   672 ;;      Locals:         0       0       0       0       0       0       0       0       0
-   673 ;;      Temps:          0       0       0       0       0       0       0       0       0
-   674 ;;      Totals:         0       0       0       0       0       0       0       0       0
-   675 ;;Total ram usage:        0 bytes
-   676 ;; Hardware stack levels used:    1
-   677 ;; This function calls:
-   678 ;;		Nothing
-   679 ;; This function is called by:
-   680 ;;		_EnvioDato
-   681 ;;		_LecturaDato
-   682 ;;		_LecturaDatoA
-   683 ;;		_EnvioDatoA
-   684 ;; This function uses a non-reentrant model
-   685 ;;
-   686                           
-   687                           	psect	text5
-   688  007E34                     __ptext5:
-   689                           	opt callstack 0
-   690  007E34                     _Start:
-   691                           	opt callstack 29
-   692  007E34                     
-   693                           ;Main18f_to_DS.c: 86:   SSPBUF=Direccion & 0b11111110;
-   694  007E34  80C5               	bsf	4037,0,c	;volatile
-   695  007E36                     l68:
-   696  007E36  B0C5               	btfsc	4037,0,c	;volatile
-   697  007E38  EF20  F03F         	goto	u11
-   698  007E3C  EF22  F03F         	goto	u10
-   699  007E40                     u11:
-   700  007E40  EF1B  F03F         	goto	l68
-   701  007E44                     u10:
-   702  007E44  0012               	return		;funcret
-   703  007E46                     __end_of_Start:
-   704                           	opt callstack 0
-   705  0000                     
-   706                           	psect	rparam
-   707  0000                     tosu	equ	0xFFF
-   708                           tosh	equ	0xFFE
-   709                           tosl	equ	0xFFD
-   710                           stkptr	equ	0xFFC
-   711                           pclatu	equ	0xFFB
-   712                           pclath	equ	0xFFA
-   713                           pcl	equ	0xFF9
-   714                           tblptru	equ	0xFF8
-   715                           tblptrh	equ	0xFF7
-   716                           tblptrl	equ	0xFF6
-   717                           tablat	equ	0xFF5
-   718                           prodh	equ	0xFF4
-   719                           prodl	equ	0xFF3
-   720                           indf0	equ	0xFEF
-   721                           postinc0	equ	0xFEE
-   722                           postdec0	equ	0xFED
-   723                           preinc0	equ	0xFEC
-   724                           plusw0	equ	0xFEB
-   725                           fsr0h	equ	0xFEA
-   726                           fsr0l	equ	0xFE9
-   727                           wreg	equ	0xFE8
-   728                           indf1	equ	0xFE7
-   729                           postinc1	equ	0xFE6
-   730                           postdec1	equ	0xFE5
-   731                           preinc1	equ	0xFE4
-   732                           plusw1	equ	0xFE3
-   733                           fsr1h	equ	0xFE2
-   734                           fsr1l	equ	0xFE1
-   735                           bsr	equ	0xFE0
-   736                           indf2	equ	0xFDF
-   737                           postinc2	equ	0xFDE
-   738                           postdec2	equ	0xFDD
-   739                           preinc2	equ	0xFDC
-   740                           plusw2	equ	0xFDB
-   741                           fsr2h	equ	0xFDA
-   742                           fsr2l	equ	0xFD9
-   743                           status	equ	0xFD8
+    48                           ; 
+    49                           ; Code-generator required, PIC18F4550 Definitions
+    50                           ; 
+    51                           ; SFR Addresses
+    52  0000                     _LATC	set	3979
+    53  0000                     _TRISC	set	3988
+    54  0000                     _OSCCON	set	4051
+    55  0000                     _SSPBUF	set	4041
+    56  0000                     _PIR1	set	3998
+    57  0000                     _SSPADD	set	4040
+    58  0000                     _SSPSTAT	set	4039
+    59  0000                     _SSPCON2	set	4037
+    60  0000                     _SSPCON1	set	4038
+    61  0000                     _LATC2	set	31834
+    62  0000                     _LATC1	set	31833
+    63  0000                     _LATC0	set	31832
+    64  0000                     _LATE1	set	31849
+    65  0000                     _LATE2	set	31850
+    66  0000                     _ACKEN	set	32300
+    67  0000                     _ACKDT	set	32301
+    68  0000                     _RCEN	set	32299
+    69  0000                     _SSPIF	set	31987
+    70  0000                     _RSEN	set	32297
+    71  0000                     _PEN	set	32298
+    72  0000                     _SEN	set	32296
+    73  0000                     _TRISB1	set	31897
+    74  0000                     _TRISB0	set	31896
+    75                           
+    76                           ; #config settings
+    77  0000                     
+    78                           	psect	cinit
+    79  007E26                     __pcinit:
+    80                           	opt callstack 0
+    81  007E26                     start_initialization:
+    82                           	opt callstack 0
+    83  007E26                     __initialization:
+    84                           	opt callstack 0
+    85                           
+    86                           ; Clear objects allocated to COMRAM (1 bytes)
+    87  007E26  6A07               	clrf	__pbssCOMRAM& (0+255),c
+    88  007E28                     end_of_initialization:
+    89                           	opt callstack 0
+    90  007E28                     __end_of__initialization:
+    91                           	opt callstack 0
+    92  007E28  0100               	movlb	0
+    93  007E2A  EFA1  F03F         	goto	_main	;jump to C main() function
+    94                           
+    95                           	psect	bssCOMRAM
+    96  000007                     __pbssCOMRAM:
+    97                           	opt callstack 0
+    98  000007                     _Contador:
+    99                           	opt callstack 0
+   100  000007                     	ds	1
+   101                           
+   102                           	psect	cstackCOMRAM
+   103  000001                     __pcstackCOMRAM:
+   104                           	opt callstack 0
+   105  000001                     EnvioDato@Registro:
+   106                           	opt callstack 0
+   107  000001                     LecturaDato@Registro:
+   108                           	opt callstack 0
+   109                           
+   110                           ; 1 bytes @ 0x0
+   111  000001                     	ds	1
+   112  000002                     EnvioDato@Dato:
+   113                           	opt callstack 0
+   114  000002                     LecturaDato@Direccion:
+   115                           	opt callstack 0
+   116                           
+   117                           ; 1 bytes @ 0x1
+   118  000002                     	ds	1
+   119  000003                     EnvioDato@Direccion:
+   120                           	opt callstack 0
+   121                           
+   122                           ; 1 bytes @ 0x2
+   123  000003                     	ds	1
+   124  000004                     ??_main:
+   125                           
+   126                           ; 1 bytes @ 0x3
+   127  000004                     	ds	2
+   128  000006                     main@aux:
+   129                           	opt callstack 0
+   130                           
+   131                           ; 1 bytes @ 0x5
+   132  000006                     	ds	1
+   133                           
+   134 ;;
+   135 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   136 ;;
+   137 ;; *************** function _main *****************
+   138 ;; Defined at:
+   139 ;;		line 44 in file "Main18f_to_DS.c"
+   140 ;; Parameters:    Size  Location     Type
+   141 ;;		None
+   142 ;; Auto vars:     Size  Location     Type
+   143 ;;  aux             1    5[COMRAM] unsigned char 
+   144 ;; Return value:  Size  Location     Type
+   145 ;;                  1    wreg      void 
+   146 ;; Registers used:
+   147 ;;		wreg, status,2, status,0, cstack
+   148 ;; Tracked objects:
+   149 ;;		On entry : 0/0
+   150 ;;		On exit  : 0/0
+   151 ;;		Unchanged: 0/0
+   152 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   153 ;;      Params:         0       0       0       0       0       0       0       0       0
+   154 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   155 ;;      Temps:          2       0       0       0       0       0       0       0       0
+   156 ;;      Totals:         3       0       0       0       0       0       0       0       0
+   157 ;;Total ram usage:        3 bytes
+   158 ;; Hardware stack levels required when called:    2
+   159 ;; This function calls:
+   160 ;;		_Activar_I2C
+   161 ;;		_EnvioDato
+   162 ;;		_LecturaDato
+   163 ;; This function is called by:
+   164 ;;		Startup code after reset
+   165 ;; This function uses a non-reentrant model
+   166 ;;
+   167                           
+   168                           	psect	text0
+   169  007F42                     __ptext0:
+   170                           	opt callstack 0
+   171  007F42                     _main:
+   172                           	opt callstack 29
+   173  007F42                     
+   174                           ;Main18f_to_DS.c: 48:   OSCCON=0b01110000;
+   175  007F42  0E70               	movlw	112
+   176  007F44  6ED3               	movwf	211,c	;volatile
+   177  007F46                     
+   178                           ;Main18f_to_DS.c: 49:   _delay((unsigned long)((1)*(48000000/4000.0)));
+   179  007F46  0E10               	movlw	16
+   180  007F48  6E04               	movwf	??_main^0,c
+   181  007F4A  0E94               	movlw	148
+   182  007F4C                     u287:
+   183  007F4C  2EE8               	decfsz	wreg,f,c
+   184  007F4E  D7FE               	bra	u287
+   185  007F50  2E04               	decfsz	??_main^0,f,c
+   186  007F52  D7FC               	bra	u287
+   187  007F54  D000               	nop2	
+   188  007F56                     
+   189                           ;Main18f_to_DS.c: 52:   TRISC=0;
+   190  007F56  0E00               	movlw	0
+   191  007F58  6E94               	movwf	148,c	;volatile
+   192  007F5A                     
+   193                           ;Main18f_to_DS.c: 53:   LATC=0;
+   194  007F5A  0E00               	movlw	0
+   195  007F5C  6E8B               	movwf	139,c	;volatile
+   196  007F5E                     
+   197                           ;Main18f_to_DS.c: 56:   Activar_I2C();
+   198  007F5E  EC32  F03F         	call	_Activar_I2C	;wreg free
+   199  007F62                     l944:
+   200                           
+   201                           ;Main18f_to_DS.c: 60:     _delay((unsigned long)((10)*(48000000/4000.0)));
+   202  007F62  0E9C               	movlw	156
+   203  007F64  6E04               	movwf	??_main^0,c
+   204  007F66  0ED7               	movlw	215
+   205  007F68                     u297:
+   206  007F68  2EE8               	decfsz	wreg,f,c
+   207  007F6A  D7FE               	bra	u297
+   208  007F6C  2E04               	decfsz	??_main^0,f,c
+   209  007F6E  D7FC               	bra	u297
+   210  007F70  F000               	nop	
+   211  007F72                     
+   212                           ;Main18f_to_DS.c: 61:       EnvioDato(0x10,1,Contador);
+   213  007F72  0E01               	movlw	1
+   214  007F74  6E01               	movwf	EnvioDato@Registro^0,c
+   215  007F76  C007  F002         	movff	_Contador,EnvioDato@Dato
+   216  007F7A  0E10               	movlw	16
+   217  007F7C  EC3F  F03F         	call	_EnvioDato
+   218  007F80                     
+   219                           ;Main18f_to_DS.c: 62:       aux = LecturaDato(0x10,0);
+   220  007F80  0E00               	movlw	0
+   221  007F82  6E01               	movwf	LecturaDato@Registro^0,c
+   222  007F84  0E10               	movlw	16
+   223  007F86  EC65  F03F         	call	_LecturaDato
+   224  007F8A  6E06               	movwf	main@aux^0,c
+   225  007F8C                     
+   226                           ;Main18f_to_DS.c: 63:       EnvioDato(0x10,0,0);
+   227  007F8C  0E00               	movlw	0
+   228  007F8E  6E01               	movwf	EnvioDato@Registro^0,c
+   229  007F90  0E00               	movlw	0
+   230  007F92  6E02               	movwf	EnvioDato@Dato^0,c
+   231  007F94  0E10               	movlw	16
+   232  007F96  EC3F  F03F         	call	_EnvioDato
+   233  007F9A                     
+   234                           ;Main18f_to_DS.c: 64:       Contador ++;
+   235  007F9A  2A07               	incf	_Contador^0,f,c
+   236  007F9C                     
+   237                           ;Main18f_to_DS.c: 65:       if(Contador >= 10){
+   238  007F9C  0E09               	movlw	9
+   239  007F9E  6407               	cpfsgt	_Contador^0,c
+   240  007FA0  EFD4  F03F         	goto	u261
+   241  007FA4  EFD6  F03F         	goto	u260
+   242  007FA8                     u261:
+   243  007FA8  EFD8  F03F         	goto	l125
+   244  007FAC                     u260:
+   245  007FAC                     
+   246                           ;Main18f_to_DS.c: 66:           Contador=0;
+   247  007FAC  0E00               	movlw	0
+   248  007FAE  6E07               	movwf	_Contador^0,c
+   249  007FB0                     l125:
+   250                           
+   251                           ;Main18f_to_DS.c: 68:       if(aux==0){
+   252  007FB0  5006               	movf	main@aux^0,w,c
+   253  007FB2  A4D8               	btfss	status,2,c
+   254  007FB4  EFDE  F03F         	goto	u271
+   255  007FB8  EFE0  F03F         	goto	u270
+   256  007FBC                     u271:
+   257  007FBC  EFE3  F03F         	goto	l126
+   258  007FC0                     u270:
+   259  007FC0                     
+   260                           ;Main18f_to_DS.c: 69:           LATC2=1;
+   261  007FC0  848B               	bsf	3979,2,c	;volatile
+   262                           
+   263                           ;Main18f_to_DS.c: 70:       }
+   264  007FC2  EFE4  F03F         	goto	l127
+   265  007FC6                     l126:
+   266                           
+   267                           ;Main18f_to_DS.c: 72:           LATC2=0;
+   268  007FC6  948B               	bcf	3979,2,c	;volatile
+   269  007FC8                     l127:
+   270                           
+   271                           ;Main18f_to_DS.c: 74:     LATC1=1;
+   272  007FC8  828B               	bsf	3979,1,c	;volatile
+   273  007FCA                     
+   274                           ;Main18f_to_DS.c: 75:     _delay((unsigned long)((1000)*(48000000/4000.0)));
+   275  007FCA  0E3D               	movlw	61
+   276  007FCC  6E05               	movwf	(??_main+1)^0,c
+   277  007FCE  0EE1               	movlw	225
+   278  007FD0  6E04               	movwf	??_main^0,c
+   279  007FD2  0E40               	movlw	64
+   280  007FD4                     u307:
+   281  007FD4  2EE8               	decfsz	wreg,f,c
+   282  007FD6  D7FE               	bra	u307
+   283  007FD8  2E04               	decfsz	??_main^0,f,c
+   284  007FDA  D7FC               	bra	u307
+   285  007FDC  2E05               	decfsz	(??_main+1)^0,f,c
+   286  007FDE  D7FA               	bra	u307
+   287  007FE0                     
+   288                           ;Main18f_to_DS.c: 76:     LATC1=0;
+   289  007FE0  928B               	bcf	3979,1,c	;volatile
+   290                           
+   291                           ;Main18f_to_DS.c: 77:     _delay((unsigned long)((1000)*(48000000/4000.0)));
+   292  007FE2  0E3D               	movlw	61
+   293  007FE4  6E05               	movwf	(??_main+1)^0,c
+   294  007FE6  0EE1               	movlw	225
+   295  007FE8  6E04               	movwf	??_main^0,c
+   296  007FEA  0E40               	movlw	64
+   297  007FEC                     u317:
+   298  007FEC  2EE8               	decfsz	wreg,f,c
+   299  007FEE  D7FE               	bra	u317
+   300  007FF0  2E04               	decfsz	??_main^0,f,c
+   301  007FF2  D7FC               	bra	u317
+   302  007FF4  2E05               	decfsz	(??_main+1)^0,f,c
+   303  007FF6  D7FA               	bra	u317
+   304  007FF8  EFB1  F03F         	goto	l944
+   305  007FFC  EF00  F000         	goto	start
+   306  008000                     __end_of_main:
+   307                           	opt callstack 0
+   308                           
+   309 ;; *************** function _LecturaDato *****************
+   310 ;; Defined at:
+   311 ;;		line 77 in file "./I2C.h"
+   312 ;; Parameters:    Size  Location     Type
+   313 ;;  Direccion       1    wreg     unsigned char 
+   314 ;;  Registro        1    0[COMRAM] unsigned char 
+   315 ;; Auto vars:     Size  Location     Type
+   316 ;;  Direccion       1    1[COMRAM] unsigned char 
+   317 ;; Return value:  Size  Location     Type
+   318 ;;                  1    wreg      unsigned char 
+   319 ;; Registers used:
+   320 ;;		wreg, status,2, status,0, cstack
+   321 ;; Tracked objects:
+   322 ;;		On entry : 0/0
+   323 ;;		On exit  : 0/0
+   324 ;;		Unchanged: 0/0
+   325 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   326 ;;      Params:         1       0       0       0       0       0       0       0       0
+   327 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   328 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   329 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   330 ;;Total ram usage:        2 bytes
+   331 ;; Hardware stack levels used:    1
+   332 ;; Hardware stack levels required when called:    1
+   333 ;; This function calls:
+   334 ;;		_Rstart
+   335 ;;		_Start
+   336 ;;		_Stop
+   337 ;; This function is called by:
+   338 ;;		_main
+   339 ;; This function uses a non-reentrant model
+   340 ;;
+   341                           
+   342                           	psect	text1
+   343  007ECA                     __ptext1:
+   344                           	opt callstack 0
+   345  007ECA                     _LecturaDato:
+   346                           	opt callstack 29
+   347                           
+   348                           ;incstack = 0
+   349                           ;LecturaDato@Direccion stored from wreg
+   350  007ECA  6E02               	movwf	LecturaDato@Direccion^0,c
+   351  007ECC                     
+   352                           ;./I2C.h: 78:   Start();
+   353  007ECC  EC17  F03F         	call	_Start	;wreg free
+   354  007ED0                     
+   355                           ;./I2C.h: 80:   SSPBUF=Direccion & 0b11111110;
+   356  007ED0  5002               	movf	LecturaDato@Direccion^0,w,c
+   357  007ED2  0BFE               	andlw	254
+   358  007ED4  6EC9               	movwf	201,c	;volatile
+   359  007ED6                     
+   360                           ;./I2C.h: 81:   SSPIF=0;
+   361  007ED6  969E               	bcf	3998,3,c	;volatile
+   362  007ED8                     l84:
+   363  007ED8  A69E               	btfss	3998,3,c	;volatile
+   364  007EDA  EF71  F03F         	goto	u211
+   365  007EDE  EF73  F03F         	goto	u210
+   366  007EE2                     u211:
+   367  007EE2  EF6C  F03F         	goto	l84
+   368  007EE6                     u210:
+   369  007EE6                     
+   370                           ;./I2C.h: 84:   SSPBUF=Registro;
+   371  007EE6  C001  FFC9         	movff	LecturaDato@Registro,4041	;volatile
+   372                           
+   373                           ;./I2C.h: 85:   SSPIF=0;
+   374  007EEA  969E               	bcf	3998,3,c	;volatile
+   375  007EEC                     l87:
+   376  007EEC  A69E               	btfss	3998,3,c	;volatile
+   377  007EEE  EF7B  F03F         	goto	u221
+   378  007EF2  EF7D  F03F         	goto	u220
+   379  007EF6                     u221:
+   380  007EF6  EF76  F03F         	goto	l87
+   381  007EFA                     u220:
+   382  007EFA                     
+   383                           ;./I2C.h: 88:   Rstart();
+   384  007EFA  EC29  F03F         	call	_Rstart	;wreg free
+   385  007EFE                     
+   386                           ;./I2C.h: 90:   SSPBUF=Direccion | 0b00000001;
+   387  007EFE  5002               	movf	LecturaDato@Direccion^0,w,c
+   388  007F00  0901               	iorlw	1
+   389  007F02  6EC9               	movwf	201,c	;volatile
+   390  007F04                     
+   391                           ;./I2C.h: 91:   SSPIF=0;
+   392  007F04  969E               	bcf	3998,3,c	;volatile
+   393  007F06                     l90:
+   394  007F06  A69E               	btfss	3998,3,c	;volatile
+   395  007F08  EF88  F03F         	goto	u231
+   396  007F0C  EF8A  F03F         	goto	u230
+   397  007F10                     u231:
+   398  007F10  EF83  F03F         	goto	l90
+   399  007F14                     u230:
+   400  007F14                     
+   401                           ;./I2C.h: 94:   RCEN=1;
+   402  007F14  86C5               	bsf	4037,3,c	;volatile
+   403                           
+   404                           ;./I2C.h: 95:   SSPIF=0;
+   405  007F16  969E               	bcf	3998,3,c	;volatile
+   406  007F18                     l93:
+   407  007F18  A69E               	btfss	3998,3,c	;volatile
+   408  007F1A  EF91  F03F         	goto	u241
+   409  007F1E  EF93  F03F         	goto	u240
+   410  007F22                     u241:
+   411  007F22  EF8C  F03F         	goto	l93
+   412  007F26                     u240:
+   413  007F26                     
+   414                           ;./I2C.h: 98:   SSPIF = 0;
+   415  007F26  969E               	bcf	3998,3,c	;volatile
+   416                           
+   417                           ;./I2C.h: 99:   ACKDT = 1;
+   418  007F28  8AC5               	bsf	4037,5,c	;volatile
+   419                           
+   420                           ;./I2C.h: 100:   ACKEN = 1;
+   421  007F2A  88C5               	bsf	4037,4,c	;volatile
+   422  007F2C                     l96:
+   423  007F2C  A69E               	btfss	3998,3,c	;volatile
+   424  007F2E  EF9B  F03F         	goto	u251
+   425  007F32  EF9D  F03F         	goto	u250
+   426  007F36                     u251:
+   427  007F36  EF96  F03F         	goto	l96
+   428  007F3A                     u250:
+   429  007F3A                     
+   430                           ;./I2C.h: 104:   Stop();
+   431  007F3A  EC20  F03F         	call	_Stop	;wreg free
+   432  007F3E                     
+   433                           ;./I2C.h: 105:   return SSPBUF;
+   434  007F3E  50C9               	movf	201,w,c	;volatile
+   435  007F40  0012               	return		;funcret
+   436  007F42                     __end_of_LecturaDato:
+   437                           	opt callstack 0
+   438                           
+   439 ;; *************** function _Rstart *****************
+   440 ;; Defined at:
+   441 ;;		line 54 in file "./I2C.h"
+   442 ;; Parameters:    Size  Location     Type
+   443 ;;		None
+   444 ;; Auto vars:     Size  Location     Type
+   445 ;;		None
+   446 ;; Return value:  Size  Location     Type
+   447 ;;                  1    wreg      void 
+   448 ;; Registers used:
+   449 ;;		None
+   450 ;; Tracked objects:
+   451 ;;		On entry : 0/0
+   452 ;;		On exit  : 0/0
+   453 ;;		Unchanged: 0/0
+   454 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   455 ;;      Params:         0       0       0       0       0       0       0       0       0
+   456 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   457 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   458 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   459 ;;Total ram usage:        0 bytes
+   460 ;; Hardware stack levels used:    1
+   461 ;; This function calls:
+   462 ;;		Nothing
+   463 ;; This function is called by:
+   464 ;;		_LecturaDato
+   465 ;; This function uses a non-reentrant model
+   466 ;;
+   467                           
+   468                           	psect	text2
+   469  007E52                     __ptext2:
+   470                           	opt callstack 0
+   471  007E52                     _Rstart:
+   472                           	opt callstack 29
+   473  007E52                     
+   474                           ;./I2C.h: 55:   RSEN=1;
+   475  007E52  82C5               	bsf	4037,1,c	;volatile
+   476  007E54                     l66:
+   477  007E54  B2C5               	btfsc	4037,1,c	;volatile
+   478  007E56  EF2F  F03F         	goto	u31
+   479  007E5A  EF31  F03F         	goto	u30
+   480  007E5E                     u31:
+   481  007E5E  EF2A  F03F         	goto	l66
+   482  007E62                     u30:
+   483  007E62  0012               	return		;funcret
+   484  007E64                     __end_of_Rstart:
+   485                           	opt callstack 0
+   486                           
+   487 ;; *************** function _EnvioDato *****************
+   488 ;; Defined at:
+   489 ;;		line 59 in file "./I2C.h"
+   490 ;; Parameters:    Size  Location     Type
+   491 ;;  Direccion       1    wreg     unsigned char 
+   492 ;;  Registro        1    0[COMRAM] unsigned char 
+   493 ;;  Dato            1    1[COMRAM] unsigned char 
+   494 ;; Auto vars:     Size  Location     Type
+   495 ;;  Direccion       1    2[COMRAM] unsigned char 
+   496 ;; Return value:  Size  Location     Type
+   497 ;;                  1    wreg      void 
+   498 ;; Registers used:
+   499 ;;		wreg, status,2, status,0, cstack
+   500 ;; Tracked objects:
+   501 ;;		On entry : 0/0
+   502 ;;		On exit  : 0/0
+   503 ;;		Unchanged: 0/0
+   504 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   505 ;;      Params:         2       0       0       0       0       0       0       0       0
+   506 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   507 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   508 ;;      Totals:         3       0       0       0       0       0       0       0       0
+   509 ;;Total ram usage:        3 bytes
+   510 ;; Hardware stack levels used:    1
+   511 ;; Hardware stack levels required when called:    1
+   512 ;; This function calls:
+   513 ;;		_Start
+   514 ;;		_Stop
+   515 ;; This function is called by:
+   516 ;;		_main
+   517 ;; This function uses a non-reentrant model
+   518 ;;
+   519                           
+   520                           	psect	text3
+   521  007E7E                     __ptext3:
+   522                           	opt callstack 0
+   523  007E7E                     _EnvioDato:
+   524                           	opt callstack 29
+   525                           
+   526                           ;incstack = 0
+   527                           ;EnvioDato@Direccion stored from wreg
+   528  007E7E  6E03               	movwf	EnvioDato@Direccion^0,c
+   529  007E80                     
+   530                           ;./I2C.h: 60:   Start();
+   531  007E80  EC17  F03F         	call	_Start	;wreg free
+   532  007E84                     
+   533                           ;./I2C.h: 62:   SSPBUF=Direccion & 0b11111110;
+   534  007E84  5003               	movf	EnvioDato@Direccion^0,w,c
+   535  007E86  0BFE               	andlw	254
+   536  007E88  6EC9               	movwf	201,c	;volatile
+   537  007E8A                     
+   538                           ;./I2C.h: 63:   SSPIF=0;
+   539  007E8A  969E               	bcf	3998,3,c	;volatile
+   540  007E8C                     l72:
+   541  007E8C  A69E               	btfss	3998,3,c	;volatile
+   542  007E8E  EF4B  F03F         	goto	u181
+   543  007E92  EF4D  F03F         	goto	u180
+   544  007E96                     u181:
+   545  007E96  EF46  F03F         	goto	l72
+   546  007E9A                     u180:
+   547  007E9A                     
+   548                           ;./I2C.h: 66:   SSPBUF=Registro;
+   549  007E9A  C001  FFC9         	movff	EnvioDato@Registro,4041	;volatile
+   550                           
+   551                           ;./I2C.h: 67:   SSPIF=0;
+   552  007E9E  969E               	bcf	3998,3,c	;volatile
+   553  007EA0                     l75:
+   554  007EA0  A69E               	btfss	3998,3,c	;volatile
+   555  007EA2  EF55  F03F         	goto	u191
+   556  007EA6  EF57  F03F         	goto	u190
+   557  007EAA                     u191:
+   558  007EAA  EF50  F03F         	goto	l75
+   559  007EAE                     u190:
+   560  007EAE                     
+   561                           ;./I2C.h: 70:   SSPBUF=Dato;
+   562  007EAE  C002  FFC9         	movff	EnvioDato@Dato,4041	;volatile
+   563                           
+   564                           ;./I2C.h: 71:   SSPIF=0;
+   565  007EB2  969E               	bcf	3998,3,c	;volatile
+   566  007EB4                     l78:
+   567  007EB4  A69E               	btfss	3998,3,c	;volatile
+   568  007EB6  EF5F  F03F         	goto	u201
+   569  007EBA  EF61  F03F         	goto	u200
+   570  007EBE                     u201:
+   571  007EBE  EF5A  F03F         	goto	l78
+   572  007EC2                     u200:
+   573  007EC2                     
+   574                           ;./I2C.h: 74:   SSPIF=0;
+   575  007EC2  969E               	bcf	3998,3,c	;volatile
+   576  007EC4                     
+   577                           ;./I2C.h: 75:   Stop();
+   578  007EC4  EC20  F03F         	call	_Stop	;wreg free
+   579  007EC8  0012               	return		;funcret
+   580  007ECA                     __end_of_EnvioDato:
+   581                           	opt callstack 0
+   582                           
+   583 ;; *************** function _Stop *****************
+   584 ;; Defined at:
+   585 ;;		line 50 in file "./I2C.h"
+   586 ;; Parameters:    Size  Location     Type
+   587 ;;		None
+   588 ;; Auto vars:     Size  Location     Type
+   589 ;;		None
+   590 ;; Return value:  Size  Location     Type
+   591 ;;                  1    wreg      void 
+   592 ;; Registers used:
+   593 ;;		None
+   594 ;; Tracked objects:
+   595 ;;		On entry : 0/0
+   596 ;;		On exit  : 0/0
+   597 ;;		Unchanged: 0/0
+   598 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   599 ;;      Params:         0       0       0       0       0       0       0       0       0
+   600 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   601 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   602 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   603 ;;Total ram usage:        0 bytes
+   604 ;; Hardware stack levels used:    1
+   605 ;; This function calls:
+   606 ;;		Nothing
+   607 ;; This function is called by:
+   608 ;;		_EnvioDato
+   609 ;;		_LecturaDato
+   610 ;;		_LecturaDatoA
+   611 ;;		_EnvioDatoA
+   612 ;; This function uses a non-reentrant model
+   613 ;;
+   614                           
+   615                           	psect	text4
+   616  007E40                     __ptext4:
+   617                           	opt callstack 0
+   618  007E40                     _Stop:
+   619                           	opt callstack 29
+   620  007E40                     
+   621                           ;./I2C.h: 51:   PEN=1;
+   622  007E40  84C5               	bsf	4037,2,c	;volatile
+   623  007E42                     l60:
+   624  007E42  B4C5               	btfsc	4037,2,c	;volatile
+   625  007E44  EF26  F03F         	goto	u21
+   626  007E48  EF28  F03F         	goto	u20
+   627  007E4C                     u21:
+   628  007E4C  EF21  F03F         	goto	l60
+   629  007E50                     u20:
+   630  007E50  0012               	return		;funcret
+   631  007E52                     __end_of_Stop:
+   632                           	opt callstack 0
+   633                           
+   634 ;; *************** function _Start *****************
+   635 ;; Defined at:
+   636 ;;		line 46 in file "./I2C.h"
+   637 ;; Parameters:    Size  Location     Type
+   638 ;;		None
+   639 ;; Auto vars:     Size  Location     Type
+   640 ;;		None
+   641 ;; Return value:  Size  Location     Type
+   642 ;;                  1    wreg      void 
+   643 ;; Registers used:
+   644 ;;		None
+   645 ;; Tracked objects:
+   646 ;;		On entry : 0/0
+   647 ;;		On exit  : 0/0
+   648 ;;		Unchanged: 0/0
+   649 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   650 ;;      Params:         0       0       0       0       0       0       0       0       0
+   651 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   652 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   653 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   654 ;;Total ram usage:        0 bytes
+   655 ;; Hardware stack levels used:    1
+   656 ;; This function calls:
+   657 ;;		Nothing
+   658 ;; This function is called by:
+   659 ;;		_EnvioDato
+   660 ;;		_LecturaDato
+   661 ;;		_LecturaDatoA
+   662 ;;		_EnvioDatoA
+   663 ;; This function uses a non-reentrant model
+   664 ;;
+   665                           
+   666                           	psect	text5
+   667  007E2E                     __ptext5:
+   668                           	opt callstack 0
+   669  007E2E                     _Start:
+   670                           	opt callstack 29
+   671  007E2E                     
+   672                           ;./I2C.h: 47:   SEN=1;
+   673  007E2E  80C5               	bsf	4037,0,c	;volatile
+   674  007E30                     l54:
+   675  007E30  B0C5               	btfsc	4037,0,c	;volatile
+   676  007E32  EF1D  F03F         	goto	u11
+   677  007E36  EF1F  F03F         	goto	u10
+   678  007E3A                     u11:
+   679  007E3A  EF18  F03F         	goto	l54
+   680  007E3E                     u10:
+   681  007E3E  0012               	return		;funcret
+   682  007E40                     __end_of_Start:
+   683                           	opt callstack 0
+   684                           
+   685 ;; *************** function _Activar_I2C *****************
+   686 ;; Defined at:
+   687 ;;		line 35 in file "./I2C.h"
+   688 ;; Parameters:    Size  Location     Type
+   689 ;;		None
+   690 ;; Auto vars:     Size  Location     Type
+   691 ;;		None
+   692 ;; Return value:  Size  Location     Type
+   693 ;;                  1    wreg      void 
+   694 ;; Registers used:
+   695 ;;		wreg, status,2
+   696 ;; Tracked objects:
+   697 ;;		On entry : 0/0
+   698 ;;		On exit  : 0/0
+   699 ;;		Unchanged: 0/0
+   700 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   701 ;;      Params:         0       0       0       0       0       0       0       0       0
+   702 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   703 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   704 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   705 ;;Total ram usage:        0 bytes
+   706 ;; Hardware stack levels used:    1
+   707 ;; This function calls:
+   708 ;;		Nothing
+   709 ;; This function is called by:
+   710 ;;		_main
+   711 ;; This function uses a non-reentrant model
+   712 ;;
+   713                           
+   714                           	psect	text6
+   715  007E64                     __ptext6:
+   716                           	opt callstack 0
+   717  007E64                     _Activar_I2C:
+   718                           	opt callstack 30
+   719  007E64                     
+   720                           ;./I2C.h: 36:     TRISB0=1;
+   721  007E64  8093               	bsf	3987,0,c	;volatile
+   722                           
+   723                           ;./I2C.h: 37:     TRISB1=1;
+   724  007E66  8293               	bsf	3987,1,c	;volatile
+   725  007E68                     
+   726                           ;./I2C.h: 38:     SSPCON1=0b00101000;
+   727  007E68  0E28               	movlw	40
+   728  007E6A  6EC6               	movwf	198,c	;volatile
+   729                           
+   730                           ;./I2C.h: 39:     SSPCON2=0b00000000;
+   731  007E6C  0E00               	movlw	0
+   732  007E6E  6EC5               	movwf	197,c	;volatile
+   733                           
+   734                           ;./I2C.h: 40:     SSPSTAT=0b11000000;
+   735  007E70  0EC0               	movlw	192
+   736  007E72  6EC7               	movwf	199,c	;volatile
+   737                           
+   738                           ;./I2C.h: 41:     SSPADD=120;
+   739  007E74  0E78               	movlw	120
+   740  007E76  6EC8               	movwf	200,c	;volatile
+   741                           
+   742                           ;./I2C.h: 42:     PIR1=0;
+   743  007E78  0E00               	movlw	0
+   744  007E7A  6E9E               	movwf	158,c	;volatile
+   745  007E7C  0012               	return		;funcret
+   746  007E7E                     __end_of_Activar_I2C:
+   747                           	opt callstack 0
+   748  0000                     
+   749                           	psect	rparam
+   750  0000                     tosu	equ	0xFFF
+   751                           tosh	equ	0xFFE
+   752                           tosl	equ	0xFFD
+   753                           stkptr	equ	0xFFC
+   754                           pclatu	equ	0xFFB
+   755                           pclath	equ	0xFFA
+   756                           pcl	equ	0xFF9
+   757                           tblptru	equ	0xFF8
+   758                           tblptrh	equ	0xFF7
+   759                           tblptrl	equ	0xFF6
+   760                           tablat	equ	0xFF5
+   761                           prodh	equ	0xFF4
+   762                           prodl	equ	0xFF3
+   763                           indf0	equ	0xFEF
+   764                           postinc0	equ	0xFEE
+   765                           postdec0	equ	0xFED
+   766                           preinc0	equ	0xFEC
+   767                           plusw0	equ	0xFEB
+   768                           fsr0h	equ	0xFEA
+   769                           fsr0l	equ	0xFE9
+   770                           wreg	equ	0xFE8
+   771                           indf1	equ	0xFE7
+   772                           postinc1	equ	0xFE6
+   773                           postdec1	equ	0xFE5
+   774                           preinc1	equ	0xFE4
+   775                           plusw1	equ	0xFE3
+   776                           fsr1h	equ	0xFE2
+   777                           fsr1l	equ	0xFE1
+   778                           bsr	equ	0xFE0
+   779                           indf2	equ	0xFDF
+   780                           postinc2	equ	0xFDE
+   781                           postdec2	equ	0xFDD
+   782                           preinc2	equ	0xFDC
+   783                           plusw2	equ	0xFDB
+   784                           fsr2h	equ	0xFDA
+   785                           fsr2l	equ	0xFD9
+   786                           status	equ	0xFD8
 
 
 Data Sizes:
@@ -825,6 +867,7 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (0) _main                                                 3     3      0     536
                                               3 COMRAM     3     3      0
+                        _Activar_I2C
                           _EnvioDato
                         _LecturaDato
  ---------------------------------------------------------------------------------
@@ -845,12 +888,15 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (2) _Start                                                0     0      0       0
  ---------------------------------------------------------------------------------
+ (1) _Activar_I2C                                          0     0      0       0
+ ---------------------------------------------------------------------------------
  Estimated maximum stack depth 2
  ---------------------------------------------------------------------------------
 
  Call Graph Graphs:
 
  _main (ROOT)
+   _Activar_I2C
    _EnvioDato
      _Start
      _Stop
@@ -891,67 +937,68 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Tue Mar 07 23:08:47 2023
+Symbol Table                                                                                   Wed Mar 08 06:59:35 2023
 
-                     l60 7FB0                       l61 7FC6                       l62 7FC8  
-                     l71 7E44                       l80 7E5A                       l74 7E48  
-                     l91 7E9A                       l83 7E68                       l59 7F62  
-                     l68 7E36                       l92 7EA0                       l77 7E56  
-                     l94 7EAE                       l86 7E78                       l95 7EB4  
-                     l88 7E86                       l89 7E8C                       l98 7EC4  
-                     u10 7E44                       u11 7E40                       u20 7E56  
-                     u21 7E52                       u30 7E68                       u31 7E64  
-                    l100 7ED2                      l101 7ED8                      l110 7F18  
-                    l104 7EF2                      l113 7F2C                      l106 7F00  
-                    l107 7F04                      l109 7F12                      l811 7E58  
-                    l807 7E34                      l809 7E46                      l921 7EB0  
-                    l915 7E6C                      l931 7EEA                      l923 7EB8  
-                    l917 7E70                      l933 7EF0                      l925 7EBC  
-                    l941 7F2E                      l919 7E76                      l935 7F26  
-                    l927 7EC2                      l951 7F4C                      l943 7F32  
-                    l937 7F2A                      l929 7EE6                      l961 7F5E  
-                    l953 7F4E                      l945 7F42                      l971 7F9C  
-                    l963 7F72                      l955 7F52                      l947 7F46  
-                    l973 7FAC                      l965 7F80                      l957 7F56  
-                    l949 7F4A                      l975 7FC0                      l967 7F8C  
-                    l959 7F5A                      l977 7FCA                      l969 7F9A  
-                    l979 7FE0                      u200 7EAE                      u201 7EAA  
-                    u210 7ED2                      u211 7ECE                      u220 7EE6  
-                    u221 7EE2                      u230 7F00                      u231 7EFC  
-                    u240 7F12                      u241 7F0E                      u250 7F26  
-                    u251 7F22                      u307 7FD4                      u180 7E86  
-                    u260 7FAC                      u181 7E82                      u317 7FEC  
-                    u261 7FA8                      u190 7E9A                      u270 7FC0  
-                    u191 7E96                      u271 7FBC                      _PEN 007E2A  
-                    u287 7F38                      u297 7F68                      _SEN 007E28  
+                     l51 7E7C                       l60 7E42                       l54 7E30  
+                     l63 7E50                       l80 7EC2                       l72 7E8C  
+                     l57 7E3E                       l81 7EC8                       l74 7E9A  
+                     l66 7E54                       l90 7F06                       l75 7EA0  
+                     l92 7F14                       l84 7ED8                       l77 7EAE  
+                     l69 7E62                       l93 7F18                       l78 7EB4  
+                     l86 7EE6                       l95 7F26                       l87 7EEC  
+                     l96 7F2C                       l99 7F40                       u10 7E3E  
+                     u11 7E3A                       u20 7E50                       u21 7E4C  
+                     u30 7E62                       u31 7E5E                      l125 7FB0  
+                    l126 7FC6                      l127 7FC8                      l810 7E52  
+                    l812 7E64                      l814 7E68                      l806 7E2E  
+                    l910 7E84                      l808 7E40                      l912 7E8A  
+                    l920 7ED6                      l914 7EC4                      l930 7F3E  
+                    l922 7EFA                      l908 7E80                      l924 7EFE  
+                    l916 7ECC                      l940 7F5A                      l926 7F04  
+                    l918 7ED0                      l950 7F8C                      l942 7F5E  
+                    l934 7F42                      l928 7F3A                      l960 7FCA  
+                    l952 7F9A                      l944 7F62                      l936 7F46  
+                    l962 7FE0                      l954 7F9C                      l946 7F72  
+                    l938 7F56                      l956 7FAC                      l948 7F80  
+                    l958 7FC0                      u200 7EC2                      u201 7EBE  
+                    u210 7EE6                      u211 7EE2                      u220 7EFA  
+                    u221 7EF6                      u230 7F14                      u231 7F10  
+                    u240 7F26                      u241 7F22                      u250 7F3A  
+                    u251 7F36                      u307 7FD4                      u180 7E9A  
+                    u260 7FAC                      u181 7E96                      u317 7FEC  
+                    u261 7FA8                      u190 7EAE                      u270 7FC0  
+                    u191 7EAA                      u271 7FBC                      _PEN 007E2A  
+                    u287 7F4C                      u297 7F68                      _SEN 007E28  
                     wreg 000FE8             __CFG_LVP$OFF 000000             __CFG_WDT$OFF 000000  
                    _LATC 000F8B                     _RCEN 007E2B                     _PIR1 000F9E  
-                   _RSEN 007E29                     _Stop 7E46            ??_LecturaDato 0002  
-                   _main 7F2E                     start 0000             ___param_bank 000000  
+                   _RSEN 007E29                     _Stop 7E40            ??_LecturaDato 0002  
+                   _main 7F42                     start 0000             ___param_bank 000000  
           __CFG_PLLDIV$5 000000                    ?_Stop 0001                    ?_main 0001  
                   _ACKEN 007E2C                    _ACKDT 007E2D                    _LATC0 007C58  
                   _LATC1 007C59                    _LATC2 007C5A                    _LATE1 007C69  
                   _LATE2 007C6A            __CFG_USBDIV$2 000000                    _TRISC 000F94  
-                  _SSPIF 007CF3                    _Start 7E34                    status 000FD8  
-        __initialization 7E2C             __end_of_Stop 7E58      __end_of_LecturaDato 7F2E  
-           __end_of_main 8000                   ??_Stop 0001                   ??_main 0004  
-          __activetblptr 000000                   ?_Start 0001       __size_of_EnvioDato 004C  
-                 _OSCCON 000FD3                   _SSPADD 000FC8                   _TRISB0 007C98  
-                 _TRISB1 007C99                   _SSPBUF 000FC9           __CFG_VREGEN$ON 000000  
-         __CFG_XINST$OFF 000000                   _Rstart 7E58            EnvioDato@Dato 0002  
-             __accesstop 0060  __end_of__initialization 7E2E          __CFG_PBADEN$OFF 000000  
-            _LecturaDato 7EB6            ___rparam_used 000001           __pcstackCOMRAM 0001  
-          __end_of_Start 7E46        __end_of_EnvioDato 7EB6                  ??_Start 0001  
-                ?_Rstart 0001                  _SSPCON1 000FC6                  _SSPCON2 000FC5  
-                _SSPSTAT 000FC7      LecturaDato@Registro 0001                  __Hparam 0000  
-                __Lparam 0000          __size_of_Rstart 0012                  __pcinit 7E2C  
-                __ramtop 0800                  __ptext0 7F2E                  __ptext1 7EB6  
-                __ptext2 7E58                  __ptext3 7E6A                  __ptext4 7E46  
-                __ptext5 7E34                  main@aux 0006     end_of_initialization 7E2E  
-      EnvioDato@Registro 0001             ?_LecturaDato 0001           __end_of_Rstart 7E6A  
-              _EnvioDato 7E6A      start_initialization 7E2C                 ??_Rstart 0001  
-             ?_EnvioDato 0001              __pbssCOMRAM 0007           __size_of_Start 0012  
-   LecturaDato@Direccion 0002     __size_of_LecturaDato 0078              ??_EnvioDato 0003  
-               _Contador 0007                 __Hrparam 0000                 __Lrparam 0000  
-          __size_of_Stop 0012            __size_of_main 00D2    __CFG_CPUDIV$OSC1_PLL2 000000  
+                  _SSPIF 007CF3              _Activar_I2C 7E64                    _Start 7E2E  
+                  status 000FD8          __initialization 7E26             __end_of_Stop 7E52  
+    __end_of_LecturaDato 7F42             __end_of_main 8000                   ??_Stop 0001  
+                 ??_main 0004            __activetblptr 000000                   ?_Start 0001  
+     __size_of_EnvioDato 004C                   _OSCCON 000FD3                   _SSPADD 000FC8  
+                 _TRISB0 007C98                   _TRISB1 007C99                   _SSPBUF 000FC9  
+         __CFG_VREGEN$ON 000000           __CFG_XINST$OFF 000000                   _Rstart 7E52  
+          EnvioDato@Dato 0002               __accesstop 0060  __end_of__initialization 7E28  
+        __CFG_PBADEN$OFF 000000              _LecturaDato 7ECA            ___rparam_used 000001  
+         __pcstackCOMRAM 0001            __end_of_Start 7E40        __end_of_EnvioDato 7ECA  
+                ??_Start 0001                  ?_Rstart 0001             ?_Activar_I2C 0001  
+                _SSPCON1 000FC6                  _SSPCON2 000FC5                  _SSPSTAT 000FC7  
+    LecturaDato@Registro 0001                  __Hparam 0000                  __Lparam 0000  
+        __size_of_Rstart 0012                  __pcinit 7E26                  __ramtop 0800  
+                __ptext0 7F42                  __ptext1 7ECA                  __ptext2 7E52  
+                __ptext3 7E7E                  __ptext4 7E40                  __ptext5 7E2E  
+                __ptext6 7E64                  main@aux 0006     end_of_initialization 7E28  
+      EnvioDato@Registro 0001             ?_LecturaDato 0001           __end_of_Rstart 7E64  
+              _EnvioDato 7E7E      start_initialization 7E26     __size_of_Activar_I2C 001A  
+               ??_Rstart 0001               ?_EnvioDato 0001              __pbssCOMRAM 0007  
+         __size_of_Start 0012     LecturaDato@Direccion 0002     __size_of_LecturaDato 0078  
+            ??_EnvioDato 0003                 _Contador 0007                 __Hrparam 0000  
+               __Lrparam 0000            __size_of_Stop 0012            __size_of_main 00BE  
+  __CFG_CPUDIV$OSC1_PLL2 000000            ??_Activar_I2C 0001      __end_of_Activar_I2C 7E7E  
      __CFG_FOSC$HSPLL_HS 000000       EnvioDato@Direccion 0003  
